@@ -1,0 +1,15 @@
+{
+  "files": [
+    {
+      "table": "CODBEX_PAYROLLSTATUS",
+      "schema": "PUBLIC",
+      "file": "/codbex-payrolls/payroll-status.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": ""
+    }
+  ]
+}

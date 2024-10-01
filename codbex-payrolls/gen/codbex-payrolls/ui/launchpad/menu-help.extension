@@ -1,0 +1,5 @@
+{
+    "module": "codbex-payrolls/gen/codbex-payrolls/ui/launchpad/menu-help.js",
+    "extensionPoint": "codbex-payrolls-menu",
+    "description": "codbex-payrolls - Application Menu"
+}

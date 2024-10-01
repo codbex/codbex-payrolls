@@ -1,0 +1,79 @@
+{
+    "schema": {
+        "structures": [
+            {
+                "name": "CODBEX_PAYROLLENTRY",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PAYROLLENTRY_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "PAYROLLENTRY_TITLE"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "nullable": true,
+                        "name": "PAYROLLENTRY_NETSALARY"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "nullable": true,
+                        "name": "PAYROLLENTRY_TAXES"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "PAYROLLENTRY_MONTH"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PAYROLLENTRY_PAYROLLSTATUS"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "PAYROLLENTRY_PAYDATE"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_PAYROLLSTATUS",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PAYROLLSTATUS_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PAYROLLSTATUS_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "PayrollEntry_PayrollStatus",
+                "type": "foreignKey",
+                "table": "CODBEX_PAYROLLENTRY",
+                "constraintName": "PayrollEntry_PayrollStatus",
+                "columns": "PAYROLLENTRY_PAYROLLSTATUS",
+                "referencedTable": "CODBEX_PAYROLLSTATUS",
+                "referencedColumns": "PAYROLLSTATUS_ID"
+            }
+        ]
+    },
+    "datasource": "DefaultDB"
+}

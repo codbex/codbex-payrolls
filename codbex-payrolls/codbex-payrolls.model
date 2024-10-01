@@ -1,0 +1,171 @@
+{
+    "model": {
+        "entities": [
+            {
+                "properties": [
+                    {
+                        "dataAutoIncrement": "true",
+                        "dataName": "PAYROLLENTRY_ID",
+                        "dataNullable": "true",
+                        "dataPrimaryKey": "true",
+                        "dataType": "INTEGER",
+                        "name": "Id",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "100",
+                        "dataName": "PAYROLLENTRY_TITLE",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "isRequiredProperty": "true",
+                        "name": "Title",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "100",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataName": "PAYROLLENTRY_NETSALARY",
+                        "dataNullable": "true",
+                        "dataType": "DOUBLE",
+                        "isRequiredProperty": "true",
+                        "name": "NetSalary",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
+                        "dataName": "PAYROLLENTRY_TAXES",
+                        "dataNullable": "true",
+                        "dataType": "DOUBLE",
+                        "isRequiredProperty": "true",
+                        "name": "Taxes",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
+                        "dataName": "PAYROLLENTRY_MONTH",
+                        "dataNullable": "true",
+                        "dataType": "DATE",
+                        "isRequiredProperty": "true",
+                        "name": "Month",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "MONTH"
+                    },
+                    {
+                        "dataName": "PAYROLLENTRY_PAYROLLSTATUS",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "PayrollStatus",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "PayrollEntry_PayrollStatus",
+                        "relationshipEntityName": "PayrollStatus",
+                        "relationshipEntityPerspectiveName": "entities",
+                        "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
+                        "dataName": "PAYROLLENTRY_PAYDATE",
+                        "dataNullable": "true",
+                        "dataType": "DATE",
+                        "name": "PayDate",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DATE"
+                    }
+                ],
+                "caption": "Manage entity PayrollEntry",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}PAYROLLENTRY\"",
+                "dataName": "PAYROLLENTRY",
+                "dataQuery": "",
+                "generateReport": "false",
+                "icon": "/services/web/resources/unicons/file.svg",
+                "layoutType": "MANAGE_MASTER",
+                "menuIndex": "100",
+                "menuKey": "payrollentry",
+                "menuLabel": "PayrollEntry",
+                "name": "PayrollEntry",
+                "navigationPath": "/Home",
+                "perspectiveIcon": "/services/web/resources/unicons/bill.svg",
+                "perspectiveLabel": "Payrolls",
+                "perspectiveName": "Payrolls",
+                "perspectiveOrder": "111",
+                "perspectiveRole": "",
+                "title": "PayrollEntry",
+                "tooltip": "PayrollEntry",
+                "type": "PRIMARY"
+            },
+            {
+                "properties": [
+                    {
+                        "dataAutoIncrement": "true",
+                        "dataName": "PAYROLLSTATUS_ID",
+                        "dataNullable": "true",
+                        "dataPrimaryKey": "true",
+                        "dataType": "INTEGER",
+                        "name": "Id",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "20",
+                        "dataName": "PAYROLLSTATUS_NAME",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "isRequiredProperty": "true",
+                        "name": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    }
+                ],
+                "caption": "Manage entity PayrollStatus",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}PAYROLLSTATUS\"",
+                "dataName": "PAYROLLSTATUS",
+                "dataQuery": "",
+                "generateReport": "false",
+                "icon": "/services/web/resources/unicons/file.svg",
+                "layoutType": "MANAGE",
+                "menuIndex": "100",
+                "menuKey": "payrollstatus",
+                "menuLabel": "PayrollStatus",
+                "name": "PayrollStatus",
+                "navigationPath": "/Home",
+                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
+                "perspectiveLabel": "Entities",
+                "perspectiveName": "entities",
+                "perspectiveOrder": "100",
+                "perspectiveRole": "",
+                "title": "PayrollStatus",
+                "tooltip": "PayrollStatus",
+                "type": "DEPENDENT"
+            }
+        ],
+        "perspectives": [
+            {
+                "name": "Payrolls",
+                "label": "Payrolls",
+                "icon": "/services/web/resources/unicons/bill.svg",
+                "order": "111",
+                "role": {}
+            }
+        ],
+        "navigations": []
+    }
+}
