@@ -7,7 +7,7 @@ const perspectiveData = {
 	id: 'Payrolls',
 	name: 'Payrolls',
 	link: '/services/web/codbex-payrolls/gen/codbex-payrolls/ui/Payrolls/index.html',
-	order: 111,
+	order: 13,
 	icon: '/services/web/resources/unicons/bill.svg',
 };
 

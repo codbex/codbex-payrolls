@@ -3,7 +3,7 @@
     {
       "table": "CODBEX_PAYROLLSTATUS",
       "schema": "PUBLIC",
-      "file": "/codbex-payrolls/payroll-status.csv",
+      "file": "/codbex-payrolls/data/payroll-status.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",

@@ -102,7 +102,7 @@
                 "perspectiveIcon": "/services/web/resources/unicons/bill.svg",
                 "perspectiveLabel": "Payrolls",
                 "perspectiveName": "Payrolls",
-                "perspectiveOrder": "111",
+                "perspectiveOrder": "13",
                 "perspectiveRole": "",
                 "title": "PayrollEntry",
                 "tooltip": "PayrollEntry",
@@ -162,7 +162,7 @@
                 "name": "Payrolls",
                 "label": "Payrolls",
                 "icon": "/services/web/resources/unicons/bill.svg",
-                "order": "111",
+                "order": "13",
                 "role": {}
             }
         ],
