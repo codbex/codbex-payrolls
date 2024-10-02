@@ -11,11 +11,11 @@ angular.module('page', ["ideUI", "ideView"])
 
 		let params = ViewParameters.get();
 		if (Object.keys(params).length) {
-			if (params?.entity?.MonthFrom) {
-				params.entity.MonthFrom = new Date(params.entity.MonthFrom);
+			if (params?.entity?.DueDateFrom) {
+				params.entity.DueDateFrom = new Date(params.entity.DueDateFrom);
 			}
-			if (params?.entity?.MonthTo) {
-				params.entity.MonthTo = new Date(params.entity.MonthTo);
+			if (params?.entity?.DueDateTo) {
+				params.entity.DueDateTo = new Date(params.entity.DueDateTo);
 			}
 			if (params?.entity?.PayDateFrom) {
 				params.entity.PayDateFrom = new Date(params.entity.PayDateFrom);
@@ -26,6 +26,8 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
+			$scope.optionsEmployee = params.optionsEmployee;
+			$scope.optionsPayrollPeriod = params.optionsPayrollPeriod;
 			$scope.optionsPayrollStatus = params.optionsPayrollStatus;
 		}
 
@@ -52,6 +54,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
 			}
+			if (entity.Employee !== undefined) {
+				filter.$filter.equals.Employee = entity.Employee;
+			}
 			if (entity.Title) {
 				filter.$filter.contains.Title = entity.Title;
 			}
@@ -61,11 +66,14 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Taxes !== undefined) {
 				filter.$filter.equals.Taxes = entity.Taxes;
 			}
-			if (entity.MonthFrom) {
-				filter.$filter.greaterThanOrEqual.Month = entity.MonthFrom;
+			if (entity.PayrollPeriod !== undefined) {
+				filter.$filter.equals.PayrollPeriod = entity.PayrollPeriod;
 			}
-			if (entity.MonthTo) {
-				filter.$filter.lessThanOrEqual.Month = entity.MonthTo;
+			if (entity.DueDateFrom) {
+				filter.$filter.greaterThanOrEqual.DueDate = entity.DueDateFrom;
+			}
+			if (entity.DueDateTo) {
+				filter.$filter.lessThanOrEqual.DueDate = entity.DueDateTo;
 			}
 			if (entity.PayrollStatus !== undefined) {
 				filter.$filter.equals.PayrollStatus = entity.PayrollStatus;

@@ -40,6 +40,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
+				$scope.optionsEmployee = [];
+				$scope.optionsPayrollPeriod = [];
 				$scope.optionsPayrollStatus = [];
 				$scope.action = 'select';
 			});
@@ -47,13 +49,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		messageHub.onDidReceiveMessage("entitySelected", function (msg) {
 			$scope.$apply(function () {
-				if (msg.data.entity.Month) {
-					msg.data.entity.Month = new Date(msg.data.entity.Month);
+				if (msg.data.entity.DueDate) {
+					msg.data.entity.DueDate = new Date(msg.data.entity.DueDate);
 				}
 				if (msg.data.entity.PayDate) {
 					msg.data.entity.PayDate = new Date(msg.data.entity.PayDate);
 				}
 				$scope.entity = msg.data.entity;
+				$scope.optionsEmployee = msg.data.optionsEmployee;
+				$scope.optionsPayrollPeriod = msg.data.optionsPayrollPeriod;
 				$scope.optionsPayrollStatus = msg.data.optionsPayrollStatus;
 				$scope.action = 'select';
 			});
@@ -62,6 +66,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("createEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
+				$scope.optionsEmployee = msg.data.optionsEmployee;
+				$scope.optionsPayrollPeriod = msg.data.optionsPayrollPeriod;
 				$scope.optionsPayrollStatus = msg.data.optionsPayrollStatus;
 				$scope.action = 'create';
 			});
@@ -69,13 +75,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		messageHub.onDidReceiveMessage("updateEntity", function (msg) {
 			$scope.$apply(function () {
-				if (msg.data.entity.Month) {
-					msg.data.entity.Month = new Date(msg.data.entity.Month);
+				if (msg.data.entity.DueDate) {
+					msg.data.entity.DueDate = new Date(msg.data.entity.DueDate);
 				}
 				if (msg.data.entity.PayDate) {
 					msg.data.entity.PayDate = new Date(msg.data.entity.PayDate);
 				}
 				$scope.entity = msg.data.entity;
+				$scope.optionsEmployee = msg.data.optionsEmployee;
+				$scope.optionsPayrollPeriod = msg.data.optionsPayrollPeriod;
 				$scope.optionsPayrollStatus = msg.data.optionsPayrollStatus;
 				$scope.action = 'update';
 			});

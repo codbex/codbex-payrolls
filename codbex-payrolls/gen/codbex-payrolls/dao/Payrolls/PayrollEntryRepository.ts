@@ -6,19 +6,23 @@ import { EntityUtils } from "../utils/EntityUtils";
 
 export interface PayrollEntryEntity {
     readonly Id: number;
+    Employee?: number;
     Title?: string;
     NetSalary?: number;
     Taxes?: number;
-    Month?: Date;
+    PayrollPeriod?: number;
+    DueDate?: Date;
     PayrollStatus?: number;
     PayDate?: Date;
 }
 
 export interface PayrollEntryCreateEntity {
+    readonly Employee?: number;
     readonly Title?: string;
     readonly NetSalary?: number;
     readonly Taxes?: number;
-    readonly Month?: Date;
+    readonly PayrollPeriod?: number;
+    readonly DueDate?: Date;
     readonly PayrollStatus?: number;
     readonly PayDate?: Date;
 }
@@ -31,64 +35,78 @@ export interface PayrollEntryEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
+            Employee?: number | number[];
             Title?: string | string[];
             NetSalary?: number | number[];
             Taxes?: number | number[];
-            Month?: Date | Date[];
+            PayrollPeriod?: number | number[];
+            DueDate?: Date | Date[];
             PayrollStatus?: number | number[];
             PayDate?: Date | Date[];
         };
         notEquals?: {
             Id?: number | number[];
+            Employee?: number | number[];
             Title?: string | string[];
             NetSalary?: number | number[];
             Taxes?: number | number[];
-            Month?: Date | Date[];
+            PayrollPeriod?: number | number[];
+            DueDate?: Date | Date[];
             PayrollStatus?: number | number[];
             PayDate?: Date | Date[];
         };
         contains?: {
             Id?: number;
+            Employee?: number;
             Title?: string;
             NetSalary?: number;
             Taxes?: number;
-            Month?: Date;
+            PayrollPeriod?: number;
+            DueDate?: Date;
             PayrollStatus?: number;
             PayDate?: Date;
         };
         greaterThan?: {
             Id?: number;
+            Employee?: number;
             Title?: string;
             NetSalary?: number;
             Taxes?: number;
-            Month?: Date;
+            PayrollPeriod?: number;
+            DueDate?: Date;
             PayrollStatus?: number;
             PayDate?: Date;
         };
         greaterThanOrEqual?: {
             Id?: number;
+            Employee?: number;
             Title?: string;
             NetSalary?: number;
             Taxes?: number;
-            Month?: Date;
+            PayrollPeriod?: number;
+            DueDate?: Date;
             PayrollStatus?: number;
             PayDate?: Date;
         };
         lessThan?: {
             Id?: number;
+            Employee?: number;
             Title?: string;
             NetSalary?: number;
             Taxes?: number;
-            Month?: Date;
+            PayrollPeriod?: number;
+            DueDate?: Date;
             PayrollStatus?: number;
             PayDate?: Date;
         };
         lessThanOrEqual?: {
             Id?: number;
+            Employee?: number;
             Title?: string;
             NetSalary?: number;
             Taxes?: number;
-            Month?: Date;
+            PayrollPeriod?: number;
+            DueDate?: Date;
             PayrollStatus?: number;
             PayDate?: Date;
         };
@@ -128,6 +146,11 @@ export class PayrollEntryRepository {
                 autoIncrement: true,
             },
             {
+                name: "Employee",
+                column: "PAYROLLENTRY_EMPLOYEE",
+                type: "INTEGER",
+            },
+            {
                 name: "Title",
                 column: "PAYROLLENTRY_TITLE",
                 type: "VARCHAR",
@@ -143,8 +166,13 @@ export class PayrollEntryRepository {
                 type: "DOUBLE",
             },
             {
-                name: "Month",
-                column: "PAYROLLENTRY_MONTH",
+                name: "PayrollPeriod",
+                column: "PAYROLLENTRY_PAYROLLPERIOD",
+                type: "INTEGER",
+            },
+            {
+                name: "DueDate",
+                column: "PAYROLLENTRY_DUEDATE",
                 type: "DATE",
             },
             {
@@ -168,7 +196,7 @@ export class PayrollEntryRepository {
 
     public findAll(options?: PayrollEntryEntityOptions): PayrollEntryEntity[] {
         return this.dao.list(options).map((e: PayrollEntryEntity) => {
-            EntityUtils.setDate(e, "Month");
+            EntityUtils.setDate(e, "DueDate");
             EntityUtils.setDate(e, "PayDate");
             return e;
         });
@@ -176,13 +204,13 @@ export class PayrollEntryRepository {
 
     public findById(id: number): PayrollEntryEntity | undefined {
         const entity = this.dao.find(id);
-        EntityUtils.setDate(entity, "Month");
+        EntityUtils.setDate(entity, "DueDate");
         EntityUtils.setDate(entity, "PayDate");
         return entity ?? undefined;
     }
 
     public create(entity: PayrollEntryCreateEntity): number {
-        EntityUtils.setLocalDate(entity, "Month");
+        EntityUtils.setLocalDate(entity, "DueDate");
         EntityUtils.setLocalDate(entity, "PayDate");
         const id = this.dao.insert(entity);
         this.triggerEvent({
@@ -199,7 +227,7 @@ export class PayrollEntryRepository {
     }
 
     public update(entity: PayrollEntryUpdateEntity): void {
-        // EntityUtils.setLocalDate(entity, "Month");
+        // EntityUtils.setLocalDate(entity, "DueDate");
         // EntityUtils.setLocalDate(entity, "PayDate");
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);

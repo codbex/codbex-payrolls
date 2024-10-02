@@ -13,6 +13,11 @@
                         "name": "PAYROLLENTRY_ID"
                     },
                     {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PAYROLLENTRY_EMPLOYEE"
+                    },
+                    {
                         "type": "VARCHAR",
                         "length": 100,
                         "nullable": true,
@@ -29,9 +34,14 @@
                         "name": "PAYROLLENTRY_TAXES"
                     },
                     {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PAYROLLENTRY_PAYROLLPERIOD"
+                    },
+                    {
                         "type": "DATE",
                         "nullable": true,
-                        "name": "PAYROLLENTRY_MONTH"
+                        "name": "PAYROLLENTRY_DUEDATE"
                     },
                     {
                         "type": "INTEGER",
@@ -63,6 +73,53 @@
                         "name": "PAYROLLSTATUS_NAME"
                     }
                 ]
+            },
+            {
+                "name": "CODBEX_PAYROLLPERIOD",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PAYROLLPERIOD_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 50,
+                        "nullable": true,
+                        "name": "PAYROLLPERIOD_TITLE"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "PAYROLLPERIOD_STARTDATE"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "PAYROLLPERIOD_ENDDATE"
+                    }
+                ]
+            },
+            {
+                "name": "PayrollEntry_Employee",
+                "type": "foreignKey",
+                "table": "CODBEX_PAYROLLENTRY",
+                "constraintName": "PayrollEntry_Employee",
+                "columns": "PAYROLLENTRY_EMPLOYEE",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
+            },
+            {
+                "name": "PayrollEntry_PayrollPeriod",
+                "type": "foreignKey",
+                "table": "CODBEX_PAYROLLENTRY",
+                "constraintName": "PayrollEntry_PayrollPeriod",
+                "columns": "PAYROLLENTRY_PAYROLLPERIOD",
+                "referencedTable": "CODBEX_PAYROLLPERIOD",
+                "referencedColumns": "PAYROLLPERIOD_ID"
             },
             {
                 "name": "PayrollEntry_PayrollStatus",

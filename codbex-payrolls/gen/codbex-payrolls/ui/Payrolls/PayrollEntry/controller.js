@@ -102,8 +102,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					}
 
 					response.data.forEach(e => {
-						if (e.Month) {
-							e.Month = new Date(e.Month);
+						if (e.DueDate) {
+							e.DueDate = new Date(e.DueDate);
 						}
 						if (e.PayDate) {
 							e.PayDate = new Date(e.PayDate);
@@ -122,6 +122,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("entitySelected", {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
+				optionsEmployee: $scope.optionsEmployee,
+				optionsPayrollPeriod: $scope.optionsPayrollPeriod,
 				optionsPayrollStatus: $scope.optionsPayrollStatus,
 			});
 		};
@@ -132,6 +134,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 			messageHub.postMessage("createEntity", {
 				entity: {},
+				optionsEmployee: $scope.optionsEmployee,
+				optionsPayrollPeriod: $scope.optionsPayrollPeriod,
 				optionsPayrollStatus: $scope.optionsPayrollStatus,
 			});
 		};
@@ -140,6 +144,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.action = "update";
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
+				optionsEmployee: $scope.optionsEmployee,
+				optionsPayrollPeriod: $scope.optionsPayrollPeriod,
 				optionsPayrollStatus: $scope.optionsPayrollStatus,
 			});
 		};
@@ -177,13 +183,35 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("PayrollEntry-filter", {
 				entity: $scope.filterEntity,
+				optionsEmployee: $scope.optionsEmployee,
+				optionsPayrollPeriod: $scope.optionsPayrollPeriod,
 				optionsPayrollStatus: $scope.optionsPayrollStatus,
 			});
 		};
 
 		//----------------Dropdowns-----------------//
+		$scope.optionsEmployee = [];
+		$scope.optionsPayrollPeriod = [];
 		$scope.optionsPayrollStatus = [];
 
+
+		$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts").then(function (response) {
+			$scope.optionsEmployee = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.FirstName
+				}
+			});
+		});
+
+		$http.get("/services/ts/codbex-payrolls/gen/codbex-payrolls/api/entities/PayrollPeriodService.ts").then(function (response) {
+			$scope.optionsPayrollPeriod = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Title
+				}
+			});
+		});
 
 		$http.get("/services/ts/codbex-payrolls/gen/codbex-payrolls/api/entities/PayrollStatusService.ts").then(function (response) {
 			$scope.optionsPayrollStatus = response.data.map(e => {
@@ -194,6 +222,22 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
+		$scope.optionsEmployeeValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsEmployee.length; i++) {
+				if ($scope.optionsEmployee[i].value === optionKey) {
+					return $scope.optionsEmployee[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsPayrollPeriodValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsPayrollPeriod.length; i++) {
+				if ($scope.optionsPayrollPeriod[i].value === optionKey) {
+					return $scope.optionsPayrollPeriod[i].text;
+				}
+			}
+			return null;
+		};
 		$scope.optionsPayrollStatusValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsPayrollStatus.length; i++) {
 				if ($scope.optionsPayrollStatus[i].value === optionKey) {
