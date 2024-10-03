@@ -11,7 +11,6 @@ servers:
 tags:
   - name: Payrolls
   - name: entities
-  - name: entities
 paths:
   /codbex-payrolls/gen/codbex-payrolls/api/Payrolls/PayrollEntryService.ts:
     get:
@@ -813,406 +812,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-payrolls/gen/codbex-payrolls/api/entities/PayrollPeriodService.ts:
-    get:
-      summary: List PayrollPeriod
-      parameters:
-        - in: query
-          name: $limit
-          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
-          required: false
-          allowReserved: true
-          schema:
-            type: integer
-            allowEmptyValue: true
-        - in: query
-          name: $offset
-          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
-          required: false
-          allowReserved: true
-          schema:
-            type: integer
-            allowEmptyValue: true
-      tags:
-        - entities
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/PayrollPeriod'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    post:
-      summary: Create PayrollPeriod
-      tags:
-        - entities
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PayrollPeriod'
-        required: true
-      responses:
-        201:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PayrollPeriod'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-payrolls/gen/codbex-payrolls/api/entities/PayrollPeriodService.ts/{id}:
-    get:
-      summary: Get PayrollPeriod by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - entities
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/PayrollPeriod'
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    put:
-      summary: Update PayrollPeriod by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - entities
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PayrollPeriod'
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PayrollPeriod'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    delete:
-      summary: Delete PayrollPeriod by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - entities
-      responses:
-        204:
-          description: Successful Request
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-payrolls/gen/codbex-payrolls/api/entities/PayrollPeriodService.ts/count:
-    get:
-      summary: Count the number of PayrollPeriod
-      tags:
-        - entities
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: integer
-                example: 100
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    post:
-      summary: Count the number of PayrollPeriod by PayrollPeriodFilterOptions
-      tags:
-        - entities
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PayrollPeriodFilterOptions'
-            examples:
-              countWithMultipleCriteria:
-                summary: Count with multiple criteria
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 33
-                    contains:
-                      Title: "abcd"
-                    greaterThan:
-                      Id: 0
-                    lessThanOrEqual:
-                      Id: 100
-              countWithEquals:
-                summary: Count with Equals
-                value:
-                  $filter:
-                    equals:
-                      Id: 0
-              countWithNotEquals:
-                summary: Count with Not Equals
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 0
-              countWithContains:
-                summary: Count with Contains
-                value:
-                  $filter:
-                    contains:
-                      Title: "abcd"
-              countWithGreaterThan:
-                summary: Count with Greater Than
-                value:
-                  $filter:
-                    greaterThan:
-                      Id: 0
-              countWithGreaterThanOrEqual:
-                summary: Count with Greater Than Or Equal
-                value:
-                  $filter:
-                    greaterThanOrEqual:
-                      Id: 0
-              countWithLessThan:
-                summary: Count with Less Than
-                value:
-                  $filter:
-                    lessThan:
-                      Id: 0
-              countWithLessThanOrEqual:
-                summary: Count with Less Than Or Equal
-                value:
-                  $filter:
-                    lessThanOrEqual:
-                      Id: 0
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: integer
-                example: 100
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-payrolls/gen/codbex-payrolls/api/entities/PayrollPeriodService.ts/search:
-    post:
-      summary: Search PayrollPeriod by PayrollPeriodFilterOptions
-      tags:
-        - entities
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PayrollPeriodFilterOptions'
-            examples:
-              searchWithMultipleCriteria:
-                summary: Search with multiple criteria
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 33
-                    contains:
-                      Title: "abcd"
-                    greaterThan:
-                      Id: 0
-                    lessThanOrEqual:
-                      Id: 100
-              searchWithEquals:
-                summary: Search with Equals
-                value:
-                  $filter:
-                    equals:
-                      Id: 0
-              searchWithNotEquals:
-                summary: Search with Not Equals
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 0
-              searchWithContains:
-                summary: Search with Contains
-                value:
-                  $filter:
-                    contains:
-                      Title: "abcd"
-              searchWithGreaterThan:
-                summary: Search with Greater Than
-                value:
-                  $filter:
-                    greaterThan:
-                      Id: 0
-              searchWithGreaterThanOrEqual:
-                summary: Search with Greater Than Or Equal
-                value:
-                  $filter:
-                    greaterThanOrEqual:
-                      Id: 0
-              searchWithLessThan:
-                summary: Search with Less Than
-                value:
-                  $filter:
-                    lessThan:
-                      Id: 0
-              searchWithLessThanOrEqual:
-                summary: Search with Less Than Or Equal
-                value:
-                  $filter:
-                    lessThanOrEqual:
-                      Id: 0
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/PayrollPeriod'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
 components:
   schemas:
     PayrollEntry:
@@ -1222,7 +821,8 @@ components:
         - Title
         - NetSalary
         - Taxes
-        - DueDate
+        - StartDate
+        - EndDate
       properties:
         Id:
           type: integer
@@ -1240,10 +840,8 @@ components:
         Taxes:
           type: number
           format: double
-        PayrollPeriod:
-          type: integer
-          format: int32
-        DueDate:
+        StartDate:
+        EndDate:
         PayrollStatus:
           type: integer
           format: int32
@@ -1300,15 +898,9 @@ components:
                       items:
                         type: number
                         format: double
-                PayrollPeriod:
+                StartDate:
                   oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                DueDate:
+                EndDate:
                   oneOf:
                 PayrollStatus:
                   oneOf:
@@ -1366,15 +958,9 @@ components:
                       items:
                         type: number
                         format: double
-                PayrollPeriod:
+                StartDate:
                   oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                DueDate:
+                EndDate:
                   oneOf:
                 PayrollStatus:
                   oneOf:
@@ -1397,8 +983,8 @@ components:
                   maxLength: 100
                 NetSalary:
                 Taxes:
-                PayrollPeriod:
-                DueDate:
+                StartDate:
+                EndDate:
                 PayrollStatus:
                 PayDate:
             greaterThan:
@@ -1420,10 +1006,8 @@ components:
                 Taxes:
                   type: number
                   format: double
-                PayrollPeriod:
-                  type: integer
-                  format: int32
-                DueDate:
+                StartDate:
+                EndDate:
                 PayrollStatus:
                   type: integer
                   format: int32
@@ -1447,10 +1031,8 @@ components:
                 Taxes:
                   type: number
                   format: double
-                PayrollPeriod:
-                  type: integer
-                  format: int32
-                DueDate:
+                StartDate:
+                EndDate:
                 PayrollStatus:
                   type: integer
                   format: int32
@@ -1474,10 +1056,8 @@ components:
                 Taxes:
                   type: number
                   format: double
-                PayrollPeriod:
-                  type: integer
-                  format: int32
-                DueDate:
+                StartDate:
+                EndDate:
                 PayrollStatus:
                   type: integer
                   format: int32
@@ -1501,22 +1081,20 @@ components:
                 Taxes:
                   type: number
                   format: double
-                PayrollPeriod:
-                  type: integer
-                  format: int32
-                DueDate:
+                StartDate:
+                EndDate:
                 PayrollStatus:
                   type: integer
                   format: int32
                 PayDate:
         $select:
           type: array
-          example: ["Id", "Employee", "Title", "NetSalary", "Taxes", "PayrollPeriod", "DueDate", "PayrollStatus", "PayDate"]
+          example: ["Id", "Employee", "Title", "NetSalary", "Taxes", "StartDate", "EndDate", "PayrollStatus", "PayDate"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Employee,Title,NetSalary,Taxes,PayrollPeriod,DueDate,PayrollStatus,PayDate"
+            example: "Id,Employee,Title,NetSalary,Taxes,StartDate,EndDate,PayrollStatus,PayDate"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -1645,156 +1223,6 @@ components:
         $sort:
           - type: string
             example: "Id,Name"
-        $order:
-          type: string
-          enum: ["asc", "desc"]
-          example: "asc"
-        $offset:
-          type: integer
-          example: 0
-        $limit:
-          type: integer
-          example: 10
-    PayrollPeriod:
-      type: object
-      required:
-        - Title
-        - StartDate
-        - EndDate
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Title:
-          type: string
-          minLength: 0
-          maxLength: 50
-        StartDate:
-        EndDate:
-    PayrollPeriodFilterOptions:
-      type: object
-      properties:
-        $filter:
-          type: object
-          properties:
-            equals:
-              type: object
-              properties:
-                Id:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Title:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 50
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 50
-                StartDate:
-                  oneOf:
-                EndDate:
-                  oneOf:
-            notEquals:
-              type: object
-              properties:
-                Id:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Title:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 50
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 50
-                StartDate:
-                  oneOf:
-                EndDate:
-                  oneOf:
-            contains:
-              type: object
-              properties:
-                Id:
-                Title:
-                  type: string
-                  minLength: 0
-                  maxLength: 50
-                StartDate:
-                EndDate:
-            greaterThan:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Title:
-                  type: string
-                  minLength: 0
-                  maxLength: 50
-                StartDate:
-                EndDate:
-            greaterThanOrEqual:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Title:
-                  type: string
-                  minLength: 0
-                  maxLength: 50
-                StartDate:
-                EndDate:
-            lessThan:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Title:
-                  type: string
-                  minLength: 0
-                  maxLength: 50
-                StartDate:
-                EndDate:
-            lessThanOrEqual:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Title:
-                  type: string
-                  minLength: 0
-                  maxLength: 50
-                StartDate:
-                EndDate:
-        $select:
-          type: array
-          example: ["Id", "Title", "StartDate", "EndDate"]
-          items:
-            type: string
-        $sort:
-          - type: string
-            example: "Id,Title,StartDate,EndDate"
         $order:
           type: string
           enum: ["asc", "desc"]

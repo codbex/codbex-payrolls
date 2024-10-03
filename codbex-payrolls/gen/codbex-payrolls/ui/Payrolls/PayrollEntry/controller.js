@@ -102,8 +102,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					}
 
 					response.data.forEach(e => {
-						if (e.DueDate) {
-							e.DueDate = new Date(e.DueDate);
+						if (e.StartDate) {
+							e.StartDate = new Date(e.StartDate);
+						}
+						if (e.EndDate) {
+							e.EndDate = new Date(e.EndDate);
 						}
 						if (e.PayDate) {
 							e.PayDate = new Date(e.PayDate);
@@ -123,7 +126,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				selectedMainEntityId: entity.Id,
 				optionsEmployee: $scope.optionsEmployee,
-				optionsPayrollPeriod: $scope.optionsPayrollPeriod,
 				optionsPayrollStatus: $scope.optionsPayrollStatus,
 			});
 		};
@@ -135,7 +137,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("createEntity", {
 				entity: {},
 				optionsEmployee: $scope.optionsEmployee,
-				optionsPayrollPeriod: $scope.optionsPayrollPeriod,
 				optionsPayrollStatus: $scope.optionsPayrollStatus,
 			});
 		};
@@ -145,7 +146,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
 				optionsEmployee: $scope.optionsEmployee,
-				optionsPayrollPeriod: $scope.optionsPayrollPeriod,
 				optionsPayrollStatus: $scope.optionsPayrollStatus,
 			});
 		};
@@ -184,14 +184,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("PayrollEntry-filter", {
 				entity: $scope.filterEntity,
 				optionsEmployee: $scope.optionsEmployee,
-				optionsPayrollPeriod: $scope.optionsPayrollPeriod,
 				optionsPayrollStatus: $scope.optionsPayrollStatus,
 			});
 		};
 
 		//----------------Dropdowns-----------------//
 		$scope.optionsEmployee = [];
-		$scope.optionsPayrollPeriod = [];
 		$scope.optionsPayrollStatus = [];
 
 
@@ -200,15 +198,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				return {
 					value: e.Id,
 					text: e.FirstName
-				}
-			});
-		});
-
-		$http.get("/services/ts/codbex-payrolls/gen/codbex-payrolls/api/entities/PayrollPeriodService.ts").then(function (response) {
-			$scope.optionsPayrollPeriod = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Title
 				}
 			});
 		});
@@ -226,14 +215,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsEmployee.length; i++) {
 				if ($scope.optionsEmployee[i].value === optionKey) {
 					return $scope.optionsEmployee[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsPayrollPeriodValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsPayrollPeriod.length; i++) {
-				if ($scope.optionsPayrollPeriod[i].value === optionKey) {
-					return $scope.optionsPayrollPeriod[i].text;
 				}
 			}
 			return null;

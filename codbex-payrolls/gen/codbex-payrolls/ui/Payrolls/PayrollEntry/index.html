@@ -53,8 +53,8 @@
 								{{next.Title}} |
 								{{next.NetSalary}} |
 								{{next.Taxes}} |
-								{{optionsPayrollPeriodValue(next.PayrollPeriod)}} |
-								{{next.DueDate | date: "dd/MMM/yyyy"}} |
+								{{next.StartDate | date: "dd/MMM/yyyy"}} |
+								{{next.EndDate | date: "dd/MMM/yyyy"}} |
 								{{optionsPayrollStatusValue(next.PayrollStatus)}} |
 								{{next.PayDate | date: "dd/MMM/yyyy"}}
 							</fd-list-byline>
