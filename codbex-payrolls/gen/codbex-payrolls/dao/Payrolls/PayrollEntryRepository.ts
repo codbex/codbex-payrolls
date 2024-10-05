@@ -195,6 +195,15 @@ export class PayrollEntryRepository {
     }
 
     public findAll(options?: PayrollEntryEntityOptions): PayrollEntryEntity[] {
+        // @ts-ignore
+        if (options.$sort === undefined) {
+            // @ts-ignore
+            options.$sort = "";
+        }
+        // @ts-ignore
+        options.$sort += "Id,";
+        // @ts-ignore
+        options.$order = "DESC";
         return this.dao.list(options).map((e: PayrollEntryEntity) => {
             EntityUtils.setDate(e, "StartDate");
             EntityUtils.setDate(e, "EndDate");

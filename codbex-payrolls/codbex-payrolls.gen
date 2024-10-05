@@ -69,6 +69,7 @@
           "dataAutoIncrement": true,
           "dataName": "PAYROLLENTRY_ID",
           "dataNullable": true,
+          "dataOrderBy": "DESC",
           "dataPrimaryKey": true,
           "dataType": "INTEGER",
           "name": "Id",
