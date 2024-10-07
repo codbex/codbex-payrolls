@@ -92,6 +92,7 @@
                         "dataName": "PAYROLLENTRY_PAYROLLSTATUS",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
+                        "isRequiredProperty": "true",
                         "name": "PayrollStatus",
                         "widgetDropDownKey": "Id",
                         "widgetDropDownValue": "Name",

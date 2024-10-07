@@ -823,6 +823,7 @@ components:
         - Taxes
         - StartDate
         - EndDate
+        - PayrollStatus
       properties:
         Id:
           type: integer

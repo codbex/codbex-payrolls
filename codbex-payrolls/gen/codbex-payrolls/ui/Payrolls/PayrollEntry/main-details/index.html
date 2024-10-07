@@ -127,13 +127,13 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idPayrollStatus" dg-required="false" dg-colon="true">PayrollStatus</fd-form-label>
+                        	<fd-form-label for="idPayrollStatus" dg-required="true" dg-colon="true">PayrollStatus</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <fd-combobox-input id="idPayrollStatus"
 	                            name="PayrollStatus"
 	                            state="{{ forms.details['PayrollStatus'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
+	                            ng-required="true"
 	                            ng-model="entity.PayrollStatus"
 	                            dg-disabled="action === 'select'"
 	                            dropdown-items="optionsPayrollStatus"
