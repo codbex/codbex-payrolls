@@ -1,0 +1,36 @@
+{
+    "expression": "0 0 1 * * ?",
+    "group": "defined",
+    "handler": "codbex-payrolls/scheduled-jobs/GeneratePayrolls/generate-payrolls-handler.mjs",
+    "description": "Scheduled Job for generating Payrolls",
+    "parameters": [
+        {
+            "name": "Employee",
+            "type": "number"
+        },
+        {
+            "name": "Title",
+            "type": "string"
+        },
+        {
+            "name": "NetSalary",
+            "type": "number"
+        },
+        {
+            "name": "Taxes",
+            "type": "number"
+        },
+        {
+            "name": "StartDate",
+            "type": "date"
+        },
+        {
+            "name": "EndDate",
+            "type": "date"
+        },
+        {
+            "name": "PayrollStatus",
+            "type": "number"
+        }
+    ]
+}

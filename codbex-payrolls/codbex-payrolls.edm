@@ -1,7 +1,7 @@
 <model>
  <entities>
   <entity name="PayrollEntry" dataName="PAYROLLENTRY" dataCount="SELECT COUNT(*) AS COUNT FROM &quot;${tablePrefix}PAYROLLENTRY&quot;" dataQuery="" type="PRIMARY" title="PayrollEntry" caption="Manage entity PayrollEntry" tooltip="PayrollEntry" icon="/services/web/resources/unicons/file.svg" menuKey="payrollentry" menuLabel="PayrollEntry" menuIndex="100" layoutType="MANAGE_MASTER" navigationPath="/Home" perspectiveName="Payrolls" perspectiveLabel="Payrolls" perspectiveIcon="/services/web/resources/unicons/bill.svg" perspectiveOrder="13" perspectiveRole="" generateReport="false">
-    <property name="Id" dataName="PAYROLLENTRY_ID" dataType="INTEGER" dataNullable="true" dataPrimaryKey="true" dataAutoIncrement="true" widgetType="TEXTBOX" widgetSize="" widgetLength="20" widgetIsMajor="true"></property>
+    <property name="Id" dataName="PAYROLLENTRY_ID" dataType="INTEGER" dataOrderBy="DESC" dataNullable="true" dataPrimaryKey="true" dataAutoIncrement="true" widgetType="TEXTBOX" widgetSize="" widgetLength="20" widgetIsMajor="true"></property>
     <property name="Employee" dataName="PAYROLLENTRY_EMPLOYEE" dataType="INTEGER" dataNullable="true" isRequiredProperty="true" widgetType="DROPDOWN" widgetSize="" widgetLength="20" widgetIsMajor="true" widgetDropDownKey="Id" widgetDropDownValue="Name"></property>
     <property name="Title" dataName="PAYROLLENTRY_TITLE" dataType="VARCHAR" dataLength="100" dataNullable="true" isRequiredProperty="true" widgetType="TEXTBOX" widgetSize="" widgetLength="100" widgetIsMajor="true"></property>
     <property name="NetSalary" dataName="PAYROLLENTRY_NETSALARY" dataType="DOUBLE" dataNullable="true" isRequiredProperty="true" widgetType="NUMBER" widgetSize="" widgetLength="20" widgetIsMajor="true"></property>

@@ -1,6 +1,24 @@
 {
     "guid": "codbex-payrolls",
-    "dependencies": [],
+    "repository": {
+        "type": "git",
+        "branch": "main",
+        "url": "https://github.com/codbex/codbex-payrolls.git"
+    },
+    "dependencies": [
+        {
+            "guid": "codbex-payroll-payment-ext",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-payroll-payment-ext.git",
+            "branch": "main"
+        },
+        {
+            "guid": "codbex-payments",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-payments.git",
+            "branch": "main"
+        }
+    ],
     "actions": [
         {
             "name": "Build TypeScript",
