@@ -140,8 +140,8 @@ class PayrollEntryService {
         if (entity.EndDate === null || entity.EndDate === undefined) {
             throw new ValidationError(`The 'EndDate' property is required, provide a valid value`);
         }
-        if (entity.PayrollStatus === null || entity.PayrollStatus === undefined) {
-            throw new ValidationError(`The 'PayrollStatus' property is required, provide a valid value`);
+        if (entity.Status === null || entity.Status === undefined) {
+            throw new ValidationError(`The 'Status' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

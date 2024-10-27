@@ -126,7 +126,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				selectedMainEntityId: entity.Id,
 				optionsEmployee: $scope.optionsEmployee,
-				optionsPayrollStatus: $scope.optionsPayrollStatus,
+				optionsStatus: $scope.optionsStatus,
 			});
 		};
 
@@ -137,7 +137,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("createEntity", {
 				entity: {},
 				optionsEmployee: $scope.optionsEmployee,
-				optionsPayrollStatus: $scope.optionsPayrollStatus,
+				optionsStatus: $scope.optionsStatus,
 			});
 		};
 
@@ -146,7 +146,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
 				optionsEmployee: $scope.optionsEmployee,
-				optionsPayrollStatus: $scope.optionsPayrollStatus,
+				optionsStatus: $scope.optionsStatus,
 			});
 		};
 
@@ -184,13 +184,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("PayrollEntry-filter", {
 				entity: $scope.filterEntity,
 				optionsEmployee: $scope.optionsEmployee,
-				optionsPayrollStatus: $scope.optionsPayrollStatus,
+				optionsStatus: $scope.optionsStatus,
 			});
 		};
 
 		//----------------Dropdowns-----------------//
 		$scope.optionsEmployee = [];
-		$scope.optionsPayrollStatus = [];
+		$scope.optionsStatus = [];
 
 
 		$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts").then(function (response) {
@@ -203,7 +203,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		});
 
 		$http.get("/services/ts/codbex-payrolls/gen/codbex-payrolls/api/entities/PayrollStatusService.ts").then(function (response) {
-			$scope.optionsPayrollStatus = response.data.map(e => {
+			$scope.optionsStatus = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -219,10 +219,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			}
 			return null;
 		};
-		$scope.optionsPayrollStatusValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsPayrollStatus.length; i++) {
-				if ($scope.optionsPayrollStatus[i].value === optionKey) {
-					return $scope.optionsPayrollStatus[i].text;
+		$scope.optionsStatusValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsStatus.length; i++) {
+				if ($scope.optionsStatus[i].value === optionKey) {
+					return $scope.optionsStatus[i].text;
 				}
 			}
 			return null;

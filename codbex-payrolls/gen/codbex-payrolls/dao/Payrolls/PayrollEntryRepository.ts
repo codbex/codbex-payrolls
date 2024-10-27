@@ -12,7 +12,7 @@ export interface PayrollEntryEntity {
     Taxes?: number;
     StartDate?: Date;
     EndDate?: Date;
-    PayrollStatus?: number;
+    Status?: number;
     PayDate?: Date;
 }
 
@@ -23,7 +23,7 @@ export interface PayrollEntryCreateEntity {
     readonly Taxes?: number;
     readonly StartDate?: Date;
     readonly EndDate?: Date;
-    readonly PayrollStatus?: number;
+    readonly Status?: number;
     readonly PayDate?: Date;
 }
 
@@ -41,7 +41,7 @@ export interface PayrollEntryEntityOptions {
             Taxes?: number | number[];
             StartDate?: Date | Date[];
             EndDate?: Date | Date[];
-            PayrollStatus?: number | number[];
+            Status?: number | number[];
             PayDate?: Date | Date[];
         };
         notEquals?: {
@@ -52,7 +52,7 @@ export interface PayrollEntryEntityOptions {
             Taxes?: number | number[];
             StartDate?: Date | Date[];
             EndDate?: Date | Date[];
-            PayrollStatus?: number | number[];
+            Status?: number | number[];
             PayDate?: Date | Date[];
         };
         contains?: {
@@ -63,7 +63,7 @@ export interface PayrollEntryEntityOptions {
             Taxes?: number;
             StartDate?: Date;
             EndDate?: Date;
-            PayrollStatus?: number;
+            Status?: number;
             PayDate?: Date;
         };
         greaterThan?: {
@@ -74,7 +74,7 @@ export interface PayrollEntryEntityOptions {
             Taxes?: number;
             StartDate?: Date;
             EndDate?: Date;
-            PayrollStatus?: number;
+            Status?: number;
             PayDate?: Date;
         };
         greaterThanOrEqual?: {
@@ -85,7 +85,7 @@ export interface PayrollEntryEntityOptions {
             Taxes?: number;
             StartDate?: Date;
             EndDate?: Date;
-            PayrollStatus?: number;
+            Status?: number;
             PayDate?: Date;
         };
         lessThan?: {
@@ -96,7 +96,7 @@ export interface PayrollEntryEntityOptions {
             Taxes?: number;
             StartDate?: Date;
             EndDate?: Date;
-            PayrollStatus?: number;
+            Status?: number;
             PayDate?: Date;
         };
         lessThanOrEqual?: {
@@ -107,7 +107,7 @@ export interface PayrollEntryEntityOptions {
             Taxes?: number;
             StartDate?: Date;
             EndDate?: Date;
-            PayrollStatus?: number;
+            Status?: number;
             PayDate?: Date;
         };
     },
@@ -176,7 +176,7 @@ export class PayrollEntryRepository {
                 type: "DATE",
             },
             {
-                name: "PayrollStatus",
+                name: "Status",
                 column: "PAYROLLENTRY_PAYROLLSTATUS",
                 type: "INTEGER",
             },
@@ -195,15 +195,6 @@ export class PayrollEntryRepository {
     }
 
     public findAll(options?: PayrollEntryEntityOptions): PayrollEntryEntity[] {
-        // @ts-ignore
-        if (options.$sort === undefined) {
-            // @ts-ignore
-            options.$sort = "";
-        }
-        // @ts-ignore
-        options.$sort += "Id,";
-        // @ts-ignore
-        options.$order = "DESC";
         return this.dao.list(options).map((e: PayrollEntryEntity) => {
             EntityUtils.setDate(e, "StartDate");
             EntityUtils.setDate(e, "EndDate");

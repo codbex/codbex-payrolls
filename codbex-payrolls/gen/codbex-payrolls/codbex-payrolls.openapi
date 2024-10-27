@@ -823,7 +823,7 @@ components:
         - Taxes
         - StartDate
         - EndDate
-        - PayrollStatus
+        - Status
       properties:
         Id:
           type: integer
@@ -843,7 +843,7 @@ components:
           format: double
         StartDate:
         EndDate:
-        PayrollStatus:
+        Status:
           type: integer
           format: int32
         PayDate:
@@ -903,7 +903,7 @@ components:
                   oneOf:
                 EndDate:
                   oneOf:
-                PayrollStatus:
+                Status:
                   oneOf:
                     - type: integer
                       format: int32
@@ -963,7 +963,7 @@ components:
                   oneOf:
                 EndDate:
                   oneOf:
-                PayrollStatus:
+                Status:
                   oneOf:
                     - type: integer
                       format: int32
@@ -986,7 +986,7 @@ components:
                 Taxes:
                 StartDate:
                 EndDate:
-                PayrollStatus:
+                Status:
                 PayDate:
             greaterThan:
               type: object
@@ -1009,7 +1009,7 @@ components:
                   format: double
                 StartDate:
                 EndDate:
-                PayrollStatus:
+                Status:
                   type: integer
                   format: int32
                 PayDate:
@@ -1034,7 +1034,7 @@ components:
                   format: double
                 StartDate:
                 EndDate:
-                PayrollStatus:
+                Status:
                   type: integer
                   format: int32
                 PayDate:
@@ -1059,7 +1059,7 @@ components:
                   format: double
                 StartDate:
                 EndDate:
-                PayrollStatus:
+                Status:
                   type: integer
                   format: int32
                 PayDate:
@@ -1084,18 +1084,18 @@ components:
                   format: double
                 StartDate:
                 EndDate:
-                PayrollStatus:
+                Status:
                   type: integer
                   format: int32
                 PayDate:
         $select:
           type: array
-          example: ["Id", "Employee", "Title", "NetSalary", "Taxes", "StartDate", "EndDate", "PayrollStatus", "PayDate"]
+          example: ["Id", "Employee", "Title", "NetSalary", "Taxes", "StartDate", "EndDate", "Status", "PayDate"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Employee,Title,NetSalary,Taxes,StartDate,EndDate,PayrollStatus,PayDate"
+            example: "Id,Employee,Title,NetSalary,Taxes,StartDate,EndDate,Status,PayDate"
         $order:
           type: string
           enum: ["asc", "desc"]

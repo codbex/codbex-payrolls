@@ -33,7 +33,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsEmployee = params.optionsEmployee;
-			$scope.optionsPayrollStatus = params.optionsPayrollStatus;
+			$scope.optionsStatus = params.optionsStatus;
 		}
 
 		$scope.filter = function () {
@@ -83,8 +83,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.EndDateTo) {
 				filter.$filter.lessThanOrEqual.EndDate = entity.EndDateTo;
 			}
-			if (entity.PayrollStatus !== undefined) {
-				filter.$filter.equals.PayrollStatus = entity.PayrollStatus;
+			if (entity.Status !== undefined) {
+				filter.$filter.equals.Status = entity.Status;
 			}
 			if (entity.PayDateFrom) {
 				filter.$filter.greaterThanOrEqual.PayDate = entity.PayDateFrom;
