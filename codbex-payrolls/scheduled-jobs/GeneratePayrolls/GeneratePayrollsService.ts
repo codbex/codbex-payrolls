@@ -14,7 +14,7 @@ export interface Payroll {
 export class GeneratePayrollsService {
 
     public static savePayrolls(payrollsData: Payroll) {
-        const sql = `INSERT INTO "CODBEX_PAYROLLENTRY" ("PAYROLLENTRY_ID","PAYROLLENTRY_EMPLOYEE", "PAYROLLENTRY_TITLE", "PAYROLLENTRY_NETSALARY","PAYROLLENTRY_TAXES","PAYROLLENTRY_STARTDATE","PAYROLLENTRY_ENDDATE","PAYROLLENTRY_PAYROLLSTATUS") values (?, ?, ?, ?, ?,?,?,?)`;
+        const sql = `INSERT INTO "CODBEX_PAYROLLENTRY" ("PAYROLLENTRY_ID","PAYROLLENTRY_EMPLOYEE", "PAYROLLENTRY_TITLE", "PAYROLLENTRY_NETSALARY","PAYROLLENTRY_TAXES","PAYROLLENTRY_STARTDATE","PAYROLLENTRY_ENDDATE","PAYROLLENTRY_STATUS") values (?, ?, ?, ?, ?,?,?,?)`;
         const queryParameters = [payrollsData.id, payrollsData.employee, payrollsData.title, payrollsData.netSalary, payrollsData.taxes, payrollsData.startDate, payrollsData.endDate, payrollsData.payrollStatus];
         insert.execute(sql, queryParameters);
     }

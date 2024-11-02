@@ -46,7 +46,7 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "PAYROLLENTRY_PAYROLLSTATUS"
+                        "name": "PAYROLLENTRY_STATUS"
                     },
                     {
                         "type": "DATE",
@@ -88,7 +88,7 @@
                 "type": "foreignKey",
                 "table": "CODBEX_PAYROLLENTRY",
                 "constraintName": "PayrollEntry_PayrollStatus",
-                "columns": "PAYROLLENTRY_PAYROLLSTATUS",
+                "columns": "PAYROLLENTRY_STATUS",
                 "referencedTable": "CODBEX_PAYROLLSTATUS",
                 "referencedColumns": "PAYROLLSTATUS_ID"
             }
