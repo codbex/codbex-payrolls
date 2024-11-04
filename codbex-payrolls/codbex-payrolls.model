@@ -51,6 +51,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "dataDefaultValue": "0",
                         "dataName": "PAYROLLENTRY_AMOUNT",
                         "dataNullable": "true",
                         "dataType": "DOUBLE",

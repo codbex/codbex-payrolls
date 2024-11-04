@@ -146,6 +146,7 @@
           "inputRule": ""
         },
         {
+          "dataDefaultValue": "0",
           "dataName": "PAYROLLENTRY_AMOUNT",
           "dataNullable": true,
           "dataType": "DOUBLE",
@@ -361,6 +362,7 @@
             "inputRule": ""
           },
           {
+            "dataDefaultValue": "0",
             "dataName": "PAYROLLENTRY_AMOUNT",
             "dataNullable": true,
             "dataType": "DOUBLE",

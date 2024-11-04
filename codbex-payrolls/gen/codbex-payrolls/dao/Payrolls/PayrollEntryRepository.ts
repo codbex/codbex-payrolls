@@ -200,6 +200,9 @@ export class PayrollEntryRepository {
         EntityUtils.setLocalDate(entity, "StartDate");
         EntityUtils.setLocalDate(entity, "EndDate");
         EntityUtils.setLocalDate(entity, "PayDate");
+        if (entity.Amount === undefined || entity.Amount === null) {
+            (entity as PayrollEntryEntity).Amount = 0;
+        }
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
