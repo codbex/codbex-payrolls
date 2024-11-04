@@ -177,7 +177,7 @@ export class PayrollEntryRepository {
             },
             {
                 name: "Status",
-                column: "PAYROLLENTRY_PAYROLLSTATUS",
+                column: "PAYROLLENTRY_STATUS",
                 type: "INTEGER",
             },
             {

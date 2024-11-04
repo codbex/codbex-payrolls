@@ -103,7 +103,7 @@
                         "widgetType": "DATE"
                     },
                     {
-                        "dataName": "PAYROLLENTRY_PAYROLLSTATUS",
+                        "dataName": "PAYROLLENTRY_STATUS",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "description": "",

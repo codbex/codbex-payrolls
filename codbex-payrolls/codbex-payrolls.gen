@@ -238,7 +238,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "PAYROLLENTRY_PAYROLLSTATUS",
+          "dataName": "PAYROLLENTRY_STATUS",
           "dataNullable": true,
           "dataType": "INTEGER",
           "description": "",
@@ -476,7 +476,7 @@
             "inputRule": ""
           },
           {
-            "dataName": "PAYROLLENTRY_PAYROLLSTATUS",
+            "dataName": "PAYROLLENTRY_STATUS",
             "dataNullable": true,
             "dataType": "INTEGER",
             "description": "",
