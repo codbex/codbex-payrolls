@@ -4,10 +4,10 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "PayrollEntryItem-details",
-    label: "PayrollEntryItem",
-    link: "/services/web/codbex-payrolls/gen/codbex-payrolls/ui/entities/PayrollEntry/PayrollEntryItem/dialog-window/index.html",
-    perspectiveName: "entities",
+    id: "PayrollEntryItem-filter",
+    label: "PayrollEntryItem Filter",
+    link: "/services/web/codbex-payrolls/gen/codbex-payrolls/ui/Payrolls/PayrollEntry/PayrollEntryItem/dialog-filter/index.html",
+    perspectiveName: "Payrolls",
 };
 
 if (typeof exports !== 'undefined') {

@@ -1,15 +1,15 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-payrolls.entities.PayrollEntryItem';
+		messageHubProvider.eventIdPrefix = 'codbex-payrolls.Payrolls.PayrollEntryItem';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-payrolls/gen/codbex-payrolls/api/entities/PayrollEntryItemService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-payrolls/gen/codbex-payrolls/api/Payrolls/PayrollEntryItemService.ts";
 	}])
 	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-payrolls-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "entities" && e.view === "PayrollEntryItem" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "entities" && e.view === "PayrollEntryItem" && e.type === "entity");
+			$scope.pageActions = response.filter(e => e.perspective === "Payrolls" && e.view === "PayrollEntryItem" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "Payrolls" && e.view === "PayrollEntryItem" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (action) {
@@ -43,13 +43,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		resetPagination();
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("codbex-payrolls.entities.PayrollEntry.entitySelected", function (msg) {
+		messageHub.onDidReceiveMessage("codbex-payrolls.Payrolls.PayrollEntry.entitySelected", function (msg) {
 			resetPagination();
 			$scope.selectedMainEntityId = msg.data.selectedMainEntityId;
 			$scope.loadPage($scope.dataPage);
 		}, true);
 
-		messageHub.onDidReceiveMessage("codbex-payrolls.entities.PayrollEntry.clearDetails", function (msg) {
+		messageHub.onDidReceiveMessage("codbex-payrolls.Payrolls.PayrollEntry.clearDetails", function (msg) {
 			$scope.$apply(function () {
 				resetPagination();
 				$scope.selectedMainEntityId = null;

@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { PayrollEntryItemRepository, PayrollEntryItemEntityOptions } from "../../dao/entities/PayrollEntryItemRepository";
+import { PayrollEntryItemRepository, PayrollEntryItemEntityOptions } from "../../dao/Payrolls/PayrollEntryItemRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-payrolls-entities-PayrollEntryItem", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-payrolls-Payrolls-PayrollEntryItem", ["validate"]);
 
 @Controller
 class PayrollEntryItemService {
@@ -41,7 +41,7 @@ class PayrollEntryItemService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-payrolls/gen/codbex-payrolls/api/entities/PayrollEntryItemService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-payrolls/gen/codbex-payrolls/api/Payrolls/PayrollEntryItemService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {

@@ -8,8 +8,8 @@ const viewData = {
     label: "PayrollEntryItem",
     factory: "frame",
     region: "bottom",
-    link: "/services/web/codbex-payrolls/gen/codbex-payrolls/ui/entities/PayrollEntry/PayrollEntryItem/index.html",
-    perspectiveName: "entities",
+    link: "/services/web/codbex-payrolls/gen/codbex-payrolls/ui/Payrolls/PayrollEntry/PayrollEntryItem/index.html",
+    perspectiveName: "Payrolls",
 };
 
 if (typeof exports !== 'undefined') {

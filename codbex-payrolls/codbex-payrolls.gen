@@ -15,6 +15,7 @@
     "Payrolls": {
       "views": [
         "PayrollEntry",
+        "PayrollEntryItem",
         "PayrollEntry-details",
         "PayrollEntry-details",
         "PayrollEntry-details",
@@ -44,7 +45,6 @@
     "entities": {
       "views": [
         "PayrollStatus",
-        "PayrollEntryItem",
         "PayrollEntryItemType"
       ],
       "name": "entities",
@@ -150,6 +150,7 @@
           "dataNullable": true,
           "dataType": "DOUBLE",
           "description": "",
+          "isCalculatedProperty": true,
           "isRequiredProperty": true,
           "name": "Amount",
           "tooltip": "",
@@ -161,7 +162,6 @@
           "dataAutoIncrement": false,
           "dataPrimaryKey": false,
           "dataUnique": false,
-          "isCalculatedProperty": false,
           "widgetLabel": "Amount",
           "widgetDropdownUrl": "",
           "dataTypeJava": "double",
@@ -365,6 +365,7 @@
             "dataNullable": true,
             "dataType": "DOUBLE",
             "description": "",
+            "isCalculatedProperty": true,
             "isRequiredProperty": true,
             "name": "Amount",
             "tooltip": "",
@@ -376,7 +377,6 @@
             "dataAutoIncrement": false,
             "dataPrimaryKey": false,
             "dataUnique": false,
-            "isCalculatedProperty": false,
             "widgetLabel": "Amount",
             "widgetDropdownUrl": "",
             "dataTypeJava": "double",
@@ -989,10 +989,10 @@
       "menuLabel": "PayrollEntryItem",
       "name": "PayrollEntryItem",
       "navigationPath": "/Home",
-      "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-      "perspectiveLabel": "Entities",
-      "perspectiveName": "entities",
-      "perspectiveOrder": "100",
+      "perspectiveIcon": "/services/web/resources/unicons/bill.svg",
+      "perspectiveLabel": "Payrolls",
+      "perspectiveName": "Payrolls",
+      "perspectiveOrder": "13",
       "perspectiveRole": "",
       "title": "PayrollEntryItem",
       "tooltip": "PayrollEntryItem",

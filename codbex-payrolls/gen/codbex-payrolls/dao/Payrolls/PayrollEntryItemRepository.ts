@@ -210,7 +210,7 @@ export class PayrollEntryItemRepository {
     }
 
     private async triggerEvent(data: PayrollEntryItemEntityEvent | PayrollEntryItemUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-payrolls-entities-PayrollEntryItem", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-payrolls-Payrolls-PayrollEntryItem", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -218,6 +218,6 @@ export class PayrollEntryItemRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-payrolls-entities-PayrollEntryItem").send(JSON.stringify(data));
+        producer.topic("codbex-payrolls-Payrolls-PayrollEntryItem").send(JSON.stringify(data));
     }
 }

@@ -18,7 +18,6 @@ export interface PayrollEntryEntity {
 export interface PayrollEntryCreateEntity {
     readonly Employee?: number;
     readonly Title?: string;
-    readonly Amount?: number;
     readonly StartDate?: Date;
     readonly EndDate?: Date;
     readonly Status?: number;
