@@ -1,0 +1,5 @@
+{
+    "module": "codbex-payrolls/gen/codbex-payrolls/ui/entities/PayrollEntry/PayrollEntryItem/dialog-window/view.js",
+    "extensionPoint": "codbex-payrolls-dialog-window",
+    "description": "codbex-payrolls - Application Dialog Window"
+}

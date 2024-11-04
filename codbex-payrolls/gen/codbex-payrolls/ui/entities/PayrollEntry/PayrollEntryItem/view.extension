@@ -1,0 +1,5 @@
+{
+    "module": "codbex-payrolls/gen/codbex-payrolls/ui/entities/PayrollEntry/PayrollEntryItem/view.js",
+    "extensionPoint": "codbex-payrolls-view",
+    "description": "codbex-payrolls - Application View - Details"
+}

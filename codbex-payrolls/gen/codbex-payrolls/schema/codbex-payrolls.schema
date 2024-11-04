@@ -26,12 +26,7 @@
                     {
                         "type": "DOUBLE",
                         "nullable": true,
-                        "name": "PAYROLLENTRY_NETSALARY"
-                    },
-                    {
-                        "type": "DOUBLE",
-                        "nullable": true,
-                        "name": "PAYROLLENTRY_TAXES"
+                        "name": "PAYROLLENTRY_AMOUNT"
                     },
                     {
                         "type": "DATE",
@@ -75,6 +70,53 @@
                 ]
             },
             {
+                "name": "CODBEX_PAYROLLENTRYITEM",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PAYROLLENTRYITEM_ID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PAYROLLENTRYITEM_TYPE"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "nullable": true,
+                        "name": "PAYROLLENTRYITEM_AMOUNT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PAYROLLENTRYITEM_PAYROLLENTRY"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_PAYROLLENTRYITEMTYPE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PAYROLLENTRYITEMTYPE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "nullable": true,
+                        "name": "PAYROLLENTRYITEMTYPE_NAME"
+                    }
+                ]
+            },
+            {
                 "name": "PayrollEntry_Employee",
                 "type": "foreignKey",
                 "table": "CODBEX_PAYROLLENTRY",
@@ -91,6 +133,24 @@
                 "columns": "PAYROLLENTRY_STATUS",
                 "referencedTable": "CODBEX_PAYROLLSTATUS",
                 "referencedColumns": "PAYROLLSTATUS_ID"
+            },
+            {
+                "name": "PayrollEntryItem_PayrollEntryItemType",
+                "type": "foreignKey",
+                "table": "CODBEX_PAYROLLENTRYITEM",
+                "constraintName": "PayrollEntryItem_PayrollEntryItemType",
+                "columns": "PAYROLLENTRYITEM_TYPE",
+                "referencedTable": "CODBEX_PAYROLLENTRYITEMTYPE",
+                "referencedColumns": "PAYROLLENTRYITEMTYPE_ID"
+            },
+            {
+                "name": "PayrollEntryItem_PayrollEntry",
+                "type": "foreignKey",
+                "table": "CODBEX_PAYROLLENTRYITEM",
+                "constraintName": "PayrollEntryItem_PayrollEntry",
+                "columns": "PAYROLLENTRYITEM_PAYROLLENTRY",
+                "referencedTable": "CODBEX_PAYROLLENTRY",
+                "referencedColumns": "PAYROLLENTRY_ID"
             }
         ]
     },

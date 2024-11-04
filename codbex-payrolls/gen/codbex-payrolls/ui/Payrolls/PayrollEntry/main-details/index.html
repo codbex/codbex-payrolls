@@ -61,33 +61,16 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idNetSalary" dg-required="true" dg-colon="true">NetSalary</fd-form-label>
+                        	<fd-form-label for="idAmount" dg-required="true" dg-colon="true">Amount</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--4 ">
-							<fd-step-input dg-id="idNetSalary"
-								name="NetSalary"
-								state="{{ forms.details['NetSalary'].$valid ? '' : 'error' }}"
+							<fd-step-input dg-id="idAmount"
+								name="Amount"
+								state="{{ forms.details['Amount'].$valid ? '' : 'error' }}"
 								dg-required="true"
-								ng-model="entity.NetSalary"
+								ng-model="entity.Amount"
 								is-readonly="action === 'select'"
-								placeholder="Enter NetSalary"
-								>
-							</fd-step-input>
-							<i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idTaxes" dg-required="true" dg-colon="true">Taxes</fd-form-label>
-                        </div>
-                        <div class="fd-col  fd-col-md--4 ">
-							<fd-step-input dg-id="idTaxes"
-								name="Taxes"
-								state="{{ forms.details['Taxes'].$valid ? '' : 'error' }}"
-								dg-required="true"
-								ng-model="entity.Taxes"
-								is-readonly="action === 'select'"
-								placeholder="Enter Taxes"
+								placeholder="Enter Amount"
 								>
 							</fd-step-input>
 							<i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
