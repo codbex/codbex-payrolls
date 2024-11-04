@@ -128,9 +128,6 @@ class PayrollEntryService {
         if (entity.Title?.length > 100) {
             throw new ValidationError(`The 'Title' exceeds the maximum length of [100] characters`);
         }
-        if (entity.Amount === null || entity.Amount === undefined) {
-            throw new ValidationError(`The 'Amount' property is required, provide a valid value`);
-        }
         if (entity.StartDate === null || entity.StartDate === undefined) {
             throw new ValidationError(`The 'StartDate' property is required, provide a valid value`);
         }

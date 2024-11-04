@@ -56,7 +56,6 @@
                         "dataType": "DOUBLE",
                         "description": "",
                         "isCalculatedProperty": "true",
-                        "isRequiredProperty": "true",
                         "name": "Amount",
                         "tooltip": "",
                         "widgetIsMajor": "true",

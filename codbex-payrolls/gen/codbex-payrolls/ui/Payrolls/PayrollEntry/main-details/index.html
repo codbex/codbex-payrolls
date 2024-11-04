@@ -61,13 +61,13 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idAmount" dg-required="true" dg-colon="true">Amount</fd-form-label>
+                        	<fd-form-label for="idAmount" dg-required="false" dg-colon="true">Amount</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--4 ">
 							<fd-step-input dg-id="idAmount"
 								name="Amount"
 								state="{{ forms.details['Amount'].$valid ? '' : 'error' }}"
-								dg-required="true"
+								dg-required="false"
 								ng-model="entity.Amount"
 								is-readonly="true"
 								placeholder="Enter Amount"

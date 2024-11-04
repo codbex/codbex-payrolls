@@ -1605,7 +1605,6 @@ components:
       required:
         - Employee
         - Title
-        - Amount
         - StartDate
         - EndDate
         - Status
