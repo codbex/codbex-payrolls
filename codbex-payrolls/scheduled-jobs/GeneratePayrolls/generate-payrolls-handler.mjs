@@ -26,10 +26,10 @@ employees.forEach((employee) => {
 
     const payrollTitle = employee.Name + "'s salary for " + nextMonthName + " " + date.getFullYear();
 
-    const payrollsCount = PayrollDao.count();
+    const payrollId = PayrollDao.count() + 1;
 
     const payroll = {
-        "id": payrollsCount + 1,
+        "id": payrollId,
         "employee": employee.Id,
         "title": payrollTitle,
         "amount": 0,
@@ -56,20 +56,16 @@ employees.forEach((employee) => {
         }
     });
 
-    let salaryItemsAmount = 0;
-
     salaryItems.forEach((item) => {
 
-        const payrollsEntryItemsCount = PayrollEntryItemDao.count();
+        const payrollEntryItemId = PayrollEntryItemDao.count() + 1;
 
         const payrollItem = {
-            "id": payrollsEntryItemsCount + 1,
+            "id": payrollEntryItemId,
             "itemType": item.Type,
             "amount": item.Quantity,
-            "payrollEntry": payrollsCount + 1
+            "payrollEntry": payrollId
         };
-
-        salaryItemsAmount += item.Quantity;
 
         GeneratePayrollsService.savePayrollEntryItem(payrollItem);
     });
@@ -77,11 +73,13 @@ employees.forEach((employee) => {
     const payrollEntry = PayrollDao.findAll({
         $filter: {
             equals: {
-                Id: payrollsCount + 1
+                Id: PayrollDao.count()
             }
         }
     });
 
-    payrollEntry[0].Amount += salaryItemsAmount;
-    PayrollDao.update(payrollEntry);
+    payrollEntry[0].Amount = salary[0].Gross;
+
+    PayrollDao.update(payrollEntry[0]);
+
 });
