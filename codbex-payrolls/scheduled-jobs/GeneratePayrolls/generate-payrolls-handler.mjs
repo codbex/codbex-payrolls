@@ -13,7 +13,6 @@ const SalaryItemDao = new SalaryItemRepository();
 const PayrollEntryItemDao = new PayrollEntryItemRepository();
 
 const employees = EmployeeDao.findAll();
-const payrollsCount = PayrollDao.count();
 
 employees.forEach((employee) => {
 
@@ -26,6 +25,8 @@ employees.forEach((employee) => {
     const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
     const payrollTitle = employee.Name + "'s salary for " + nextMonthName + " " + date.getFullYear();
+
+    const payrollsCount = PayrollDao.count();
 
     const payroll = {
         "id": payrollsCount + 1,
@@ -55,6 +56,8 @@ employees.forEach((employee) => {
         }
     });
 
+    let salaryItemsAmount = 0;
+
     salaryItems.forEach((item) => {
 
         const payrollsEntryItemsCount = PayrollEntryItemDao.count();
@@ -66,7 +69,19 @@ employees.forEach((employee) => {
             "payrollEntry": payrollsCount + 1
         };
 
+        salaryItemsAmount += item.Quantity;
+
         GeneratePayrollsService.savePayrollEntryItem(payrollItem);
     });
 
+    const payrollEntry = PayrollDao.findAll({
+        $filter: {
+            equals: {
+                Id: payrollsCount + 1
+            }
+        }
+    });
+
+    payrollEntry[0].Amount += salaryItemsAmount;
+    PayrollDao.update(payrollEntry);
 });

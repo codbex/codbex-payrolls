@@ -1,5 +1,5 @@
 {
-    "expression": "0/10 * * * * ?",
+    "expression": "0 0 1 * * ?",
     "group": "defined",
     "handler": "codbex-payrolls/scheduled-jobs/GeneratePayrolls/generate-payrolls-handler.mjs",
     "description": "Scheduled Job for generating Payrolls",
