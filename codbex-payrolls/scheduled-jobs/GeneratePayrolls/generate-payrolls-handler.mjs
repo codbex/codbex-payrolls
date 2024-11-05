@@ -60,10 +60,12 @@ employees.forEach((employee) => {
 
         const payrollEntryItemId = PayrollEntryItemDao.count() + 1;
 
+        const amount = item.Type == 1 ? salary[0].Net : item.Quantity;
+
         const payrollItem = {
             "id": payrollEntryItemId,
             "itemType": item.Type,
-            "amount": item.Quantity,
+            "amount": amount,
             "payrollEntry": payrollId
         };
 
