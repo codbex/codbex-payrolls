@@ -90,6 +90,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.action = 'update';
 			});
 		});
+
+		$scope.serviceEmployee = "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts";
+		$scope.serviceStatus = "/services/ts/codbex-payrolls/gen/codbex-payrolls/api/entities/PayrollStatusService.ts";
+
 		//-----------------Events-------------------//
 
 		$scope.create = function () {

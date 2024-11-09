@@ -8,8 +8,7 @@ export interface PayrollEntryEntity {
     readonly Id: number;
     Employee?: number;
     Title?: string;
-    NetSalary?: number;
-    Taxes?: number;
+    Amount?: number;
     StartDate?: Date;
     EndDate?: Date;
     Status?: number;
@@ -19,8 +18,6 @@ export interface PayrollEntryEntity {
 export interface PayrollEntryCreateEntity {
     readonly Employee?: number;
     readonly Title?: string;
-    readonly NetSalary?: number;
-    readonly Taxes?: number;
     readonly StartDate?: Date;
     readonly EndDate?: Date;
     readonly Status?: number;
@@ -37,8 +34,7 @@ export interface PayrollEntryEntityOptions {
             Id?: number | number[];
             Employee?: number | number[];
             Title?: string | string[];
-            NetSalary?: number | number[];
-            Taxes?: number | number[];
+            Amount?: number | number[];
             StartDate?: Date | Date[];
             EndDate?: Date | Date[];
             Status?: number | number[];
@@ -48,8 +44,7 @@ export interface PayrollEntryEntityOptions {
             Id?: number | number[];
             Employee?: number | number[];
             Title?: string | string[];
-            NetSalary?: number | number[];
-            Taxes?: number | number[];
+            Amount?: number | number[];
             StartDate?: Date | Date[];
             EndDate?: Date | Date[];
             Status?: number | number[];
@@ -59,8 +54,7 @@ export interface PayrollEntryEntityOptions {
             Id?: number;
             Employee?: number;
             Title?: string;
-            NetSalary?: number;
-            Taxes?: number;
+            Amount?: number;
             StartDate?: Date;
             EndDate?: Date;
             Status?: number;
@@ -70,8 +64,7 @@ export interface PayrollEntryEntityOptions {
             Id?: number;
             Employee?: number;
             Title?: string;
-            NetSalary?: number;
-            Taxes?: number;
+            Amount?: number;
             StartDate?: Date;
             EndDate?: Date;
             Status?: number;
@@ -81,8 +74,7 @@ export interface PayrollEntryEntityOptions {
             Id?: number;
             Employee?: number;
             Title?: string;
-            NetSalary?: number;
-            Taxes?: number;
+            Amount?: number;
             StartDate?: Date;
             EndDate?: Date;
             Status?: number;
@@ -92,8 +84,7 @@ export interface PayrollEntryEntityOptions {
             Id?: number;
             Employee?: number;
             Title?: string;
-            NetSalary?: number;
-            Taxes?: number;
+            Amount?: number;
             StartDate?: Date;
             EndDate?: Date;
             Status?: number;
@@ -103,8 +94,7 @@ export interface PayrollEntryEntityOptions {
             Id?: number;
             Employee?: number;
             Title?: string;
-            NetSalary?: number;
-            Taxes?: number;
+            Amount?: number;
             StartDate?: Date;
             EndDate?: Date;
             Status?: number;
@@ -156,13 +146,8 @@ export class PayrollEntryRepository {
                 type: "VARCHAR",
             },
             {
-                name: "NetSalary",
-                column: "PAYROLLENTRY_NETSALARY",
-                type: "DOUBLE",
-            },
-            {
-                name: "Taxes",
-                column: "PAYROLLENTRY_TAXES",
+                name: "Amount",
+                column: "PAYROLLENTRY_AMOUNT",
                 type: "DOUBLE",
             },
             {
@@ -215,6 +200,9 @@ export class PayrollEntryRepository {
         EntityUtils.setLocalDate(entity, "StartDate");
         EntityUtils.setLocalDate(entity, "EndDate");
         EntityUtils.setLocalDate(entity, "PayDate");
+        if (entity.Amount === undefined || entity.Amount === null) {
+            (entity as PayrollEntryEntity).Amount = 0;
+        }
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",

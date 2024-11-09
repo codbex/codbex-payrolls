@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "codbex-payrolls-Payrolls-PayrollEntryItem",
+    "description": "Payrolls extension",
+    "module": "codbex-payrolls/events/CalculateAmount/CalculateAmountHandler.ts"
+}

@@ -1,23 +1,34 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { PayrollEntryRepository, PayrollEntryEntityOptions } from "../../dao/Payrolls/PayrollEntryRepository";
+import { PayrollEntryItemRepository, PayrollEntryItemEntityOptions } from "../../dao/Payrolls/PayrollEntryItemRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-payrolls-Payrolls-PayrollEntry", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-payrolls-Payrolls-PayrollEntryItem", ["validate"]);
 
 @Controller
-class PayrollEntryService {
+class PayrollEntryItemService {
 
-    private readonly repository = new PayrollEntryRepository();
+    private readonly repository = new PayrollEntryItemRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: PayrollEntryEntityOptions = {
+            const options: PayrollEntryItemEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
+
+            let PayrollEntry = parseInt(ctx.queryParameters.PayrollEntry);
+            PayrollEntry = isNaN(PayrollEntry) ? ctx.queryParameters.PayrollEntry : PayrollEntry;
+
+            if (PayrollEntry !== undefined) {
+                options.$filter = {
+                    equals: {
+                        PayrollEntry: PayrollEntry
+                    }
+                };
+            }
 
             return this.repository.findAll(options);
         } catch (error: any) {
@@ -30,7 +41,7 @@ class PayrollEntryService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-payrolls/gen/codbex-payrolls/api/Payrolls/PayrollEntryService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-payrolls/gen/codbex-payrolls/api/Payrolls/PayrollEntryItemService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -73,7 +84,7 @@ class PayrollEntryService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("PayrollEntry not found");
+                HttpUtils.sendResponseNotFound("PayrollEntryItem not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -101,7 +112,7 @@ class PayrollEntryService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("PayrollEntry not found");
+                HttpUtils.sendResponseNotFound("PayrollEntryItem not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -119,23 +130,11 @@ class PayrollEntryService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Employee === null || entity.Employee === undefined) {
-            throw new ValidationError(`The 'Employee' property is required, provide a valid value`);
+        if (entity.Type === null || entity.Type === undefined) {
+            throw new ValidationError(`The 'Type' property is required, provide a valid value`);
         }
-        if (entity.Title === null || entity.Title === undefined) {
-            throw new ValidationError(`The 'Title' property is required, provide a valid value`);
-        }
-        if (entity.Title?.length > 100) {
-            throw new ValidationError(`The 'Title' exceeds the maximum length of [100] characters`);
-        }
-        if (entity.StartDate === null || entity.StartDate === undefined) {
-            throw new ValidationError(`The 'StartDate' property is required, provide a valid value`);
-        }
-        if (entity.EndDate === null || entity.EndDate === undefined) {
-            throw new ValidationError(`The 'EndDate' property is required, provide a valid value`);
-        }
-        if (entity.Status === null || entity.Status === undefined) {
-            throw new ValidationError(`The 'Status' property is required, provide a valid value`);
+        if (entity.Amount === null || entity.Amount === undefined) {
+            throw new ValidationError(`The 'Amount' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

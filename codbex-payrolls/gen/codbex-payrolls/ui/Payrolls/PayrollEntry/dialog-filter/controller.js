@@ -65,11 +65,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Title) {
 				filter.$filter.contains.Title = entity.Title;
 			}
-			if (entity.NetSalary !== undefined) {
-				filter.$filter.equals.NetSalary = entity.NetSalary;
-			}
-			if (entity.Taxes !== undefined) {
-				filter.$filter.equals.Taxes = entity.Taxes;
+			if (entity.Amount !== undefined) {
+				filter.$filter.equals.Amount = entity.Amount;
 			}
 			if (entity.StartDateFrom) {
 				filter.$filter.greaterThanOrEqual.StartDate = entity.StartDateFrom;
