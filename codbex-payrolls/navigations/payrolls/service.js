@@ -1,10 +1,8 @@
 const navigationData = {
     id: 'payrolls-navigation',
     label: "Payrolls",
-    view: "payrolls",
     group: "salaries",
-    orderNumber: 1000,
-    lazyLoad: true,
+    order: 1000,
     link: "/services/web/codbex-payrolls/gen/codbex-payrolls/ui/Payrolls/index.html?embedded"
 };
 
