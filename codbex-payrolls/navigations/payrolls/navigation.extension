@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "dashboard-navigations",
+    "module": "codbex-payrolls/navigations/payrolls/service.js",
+    "description": "Payrolls Navigation"
+}
