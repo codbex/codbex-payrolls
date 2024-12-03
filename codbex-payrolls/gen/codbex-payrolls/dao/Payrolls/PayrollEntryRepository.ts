@@ -9,6 +9,7 @@ export interface PayrollEntryEntity {
     Employee?: number;
     Title?: string;
     Amount?: number;
+    Currency?: number;
     StartDate?: Date;
     EndDate?: Date;
     Status?: number;
@@ -18,6 +19,7 @@ export interface PayrollEntryEntity {
 export interface PayrollEntryCreateEntity {
     readonly Employee?: number;
     readonly Title?: string;
+    readonly Currency?: number;
     readonly StartDate?: Date;
     readonly EndDate?: Date;
     readonly Status?: number;
@@ -35,6 +37,7 @@ export interface PayrollEntryEntityOptions {
             Employee?: number | number[];
             Title?: string | string[];
             Amount?: number | number[];
+            Currency?: number | number[];
             StartDate?: Date | Date[];
             EndDate?: Date | Date[];
             Status?: number | number[];
@@ -45,6 +48,7 @@ export interface PayrollEntryEntityOptions {
             Employee?: number | number[];
             Title?: string | string[];
             Amount?: number | number[];
+            Currency?: number | number[];
             StartDate?: Date | Date[];
             EndDate?: Date | Date[];
             Status?: number | number[];
@@ -55,6 +59,7 @@ export interface PayrollEntryEntityOptions {
             Employee?: number;
             Title?: string;
             Amount?: number;
+            Currency?: number;
             StartDate?: Date;
             EndDate?: Date;
             Status?: number;
@@ -65,6 +70,7 @@ export interface PayrollEntryEntityOptions {
             Employee?: number;
             Title?: string;
             Amount?: number;
+            Currency?: number;
             StartDate?: Date;
             EndDate?: Date;
             Status?: number;
@@ -75,6 +81,7 @@ export interface PayrollEntryEntityOptions {
             Employee?: number;
             Title?: string;
             Amount?: number;
+            Currency?: number;
             StartDate?: Date;
             EndDate?: Date;
             Status?: number;
@@ -85,6 +92,7 @@ export interface PayrollEntryEntityOptions {
             Employee?: number;
             Title?: string;
             Amount?: number;
+            Currency?: number;
             StartDate?: Date;
             EndDate?: Date;
             Status?: number;
@@ -95,6 +103,7 @@ export interface PayrollEntryEntityOptions {
             Employee?: number;
             Title?: string;
             Amount?: number;
+            Currency?: number;
             StartDate?: Date;
             EndDate?: Date;
             Status?: number;
@@ -149,6 +158,11 @@ export class PayrollEntryRepository {
                 name: "Amount",
                 column: "PAYROLLENTRY_AMOUNT",
                 type: "DOUBLE",
+            },
+            {
+                name: "Currency",
+                column: "PAYROLLENTRY_CURRENCY",
+                type: "INTEGER",
             },
             {
                 name: "StartDate",

@@ -33,6 +33,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsEmployee = params.optionsEmployee;
+			$scope.optionsCurrency = params.optionsCurrency;
 			$scope.optionsStatus = params.optionsStatus;
 		}
 
@@ -67,6 +68,9 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.Amount !== undefined) {
 				filter.$filter.equals.Amount = entity.Amount;
+			}
+			if (entity.Currency !== undefined) {
+				filter.$filter.equals.Currency = entity.Currency;
 			}
 			if (entity.StartDateFrom) {
 				filter.$filter.greaterThanOrEqual.StartDate = entity.StartDateFrom;
