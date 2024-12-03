@@ -2,8 +2,8 @@ const widgetData = {
     id: 'upcoming-taxes-payment',
     label: 'Upcoming Taxes Payment',
     link: '/services/web/codbex-payrolls/widgets/upcoming-taxes-payment/index.html',
-    lazyLoad: true,
-    size: "medium"
+    redirectViewId: 'payrolls-navigation',
+    size: "small"
 };
 
 function getWidget() {
