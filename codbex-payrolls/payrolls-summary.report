@@ -1,0 +1,114 @@
+{
+    "name": "PayrollsSummary",
+    "alias": "PayrollEntry",
+    "table": "CODBEX_PAYROLLENTRY",
+    "columns": [
+        {
+            "table": "Employee",
+            "alias": "Employee Name",
+            "name": "EMPLOYEE_NAME",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Salary",
+            "alias": "Net Salary",
+            "name": "SALARY_NET",
+            "type": "DOUBLE",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Salary",
+            "alias": "Taxes",
+            "name": "SALARY_GROSS - SALARY_NET",
+            "type": "DOUBLE",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "PayrollEntry",
+            "alias": "Bonuses",
+            "name": "PAYROLLENTRY_AMOUNT - SALARY_GROSS",
+            "type": "DOUBLE",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "PayrollEntry",
+            "alias": "Total",
+            "name": "PAYROLLENTRY_AMOUNT - (SALARY_GROSS - SALARY_NET)",
+            "type": "DOUBLE",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "PayrollEntry",
+            "alias": "Start Date",
+            "name": "PAYROLLENTRY_STARTDATE",
+            "type": "DATE",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "PayrollEntry",
+            "alias": "Pay Date",
+            "name": "PAYROLLENTRY_PAYDATE",
+            "type": "DATE",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "PayrollStatus",
+            "alias": "Status",
+            "name": "PAYROLLSTATUS_NAME",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        }
+    ],
+    "query": "SELECT Employee.EMPLOYEE_NAME as \"Employee Name\", Salary.SALARY_NET as \"Net Salary\", Salary.SALARY_GROSS - SALARY_NET as \"Taxes\", PayrollEntry.PAYROLLENTRY_AMOUNT - SALARY_GROSS as \"Bonuses\", PayrollEntry.PAYROLLENTRY_AMOUNT - (SALARY_GROSS - SALARY_NET) as \"Total\", PayrollEntry.PAYROLLENTRY_STARTDATE as \"Start Date\", PayrollEntry.PAYROLLENTRY_PAYDATE as \"Pay Date\", PayrollStatus.PAYROLLSTATUS_NAME as \"Status\"\nFROM CODBEX_PAYROLLENTRY as PayrollEntry\n  INNER JOIN CODBEX_EMPLOYEE Employee ON Employee.EMPLOYEE_ID=PayrollEntry.PAYROLLENTRY_EMPLOYEE\n  INNER JOIN CODBEX_PAYROLLSTATUS PayrollStatus ON PayrollStatus.PAYROLLSTATUS_ID=PayrollEntry.PAYROLLENTRY_STATUS\n  INNER JOIN CODBEX_SALARY Salary ON Salary.SALARY_EMPLOYEE=PayrollEntry.PAYROLLENTRY_EMPLOYEE\nWHERE PayrollEntry.PAYROLLENTRY_STARTDATE = :StartDate",
+    "joins": [
+        {
+            "alias": "Employee",
+            "name": "CODBEX_EMPLOYEE",
+            "type": "INNER",
+            "condition": "Employee.EMPLOYEE_ID=PayrollEntry.PAYROLLENTRY_EMPLOYEE"
+        },
+        {
+            "alias": "PayrollStatus",
+            "name": "CODBEX_PAYROLLSTATUS",
+            "type": "INNER",
+            "condition": "PayrollStatus.PAYROLLSTATUS_ID=PayrollEntry.PAYROLLENTRY_STATUS"
+        },
+        {
+            "alias": "Salary",
+            "name": "CODBEX_SALARY",
+            "type": "INNER",
+            "condition": "Salary.SALARY_EMPLOYEE=PayrollEntry.PAYROLLENTRY_EMPLOYEE"
+        }
+    ],
+    "conditions": [
+        {
+            "left": "PayrollEntry.PAYROLLENTRY_STARTDATE",
+            "operation": "=",
+            "right": ":StartDate"
+        }
+    ],
+    "parameters": [
+        {
+            "name": "StartDate",
+            "type": "DATE",
+            "initial": "2024-11-01"
+        }
+    ]
+}

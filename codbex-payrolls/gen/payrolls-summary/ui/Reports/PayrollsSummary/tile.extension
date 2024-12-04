@@ -1,0 +1,5 @@
+{
+    "module": "codbex-payrolls/gen/payrolls-summary/ui/Reports/PayrollsSummary/tile.js",
+    "extensionPoint": "codbex-payrolls-tile",
+    "description": "codbex-payrolls - Application Tile"
+}
