@@ -1,5 +1,5 @@
 const widgetData = {
-    id: 'upcoming-taxes-payment',
+    id: 'upcoming-taxes-payment-widget',
     label: 'Upcoming Taxes Payment',
     link: '/services/web/codbex-payrolls/widgets/upcoming-taxes-payment/index.html',
     redirectViewId: 'payrolls-navigation',
