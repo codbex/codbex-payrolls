@@ -11,6 +11,6 @@
     "dependencies":
     {
         "@codbex/codbex-payments": "0.6.0",
-        "@codbex/codbex-payroll-payment=ext": "0.1.0",
+        "@codbex/codbex-payroll-payment-ext": "0.1.0"
     }
 }
