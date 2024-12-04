@@ -30,6 +30,11 @@
                         "name": "PAYROLLENTRY_AMOUNT"
                     },
                     {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PAYROLLENTRY_CURRENCY"
+                    },
+                    {
                         "type": "DATE",
                         "nullable": true,
                         "name": "PAYROLLENTRY_STARTDATE"
@@ -125,6 +130,15 @@
                 "columns": "PAYROLLENTRY_EMPLOYEE",
                 "referencedTable": "CODBEX_EMPLOYEE",
                 "referencedColumns": "EMPLOYEE_ID"
+            },
+            {
+                "name": "PayrollEntry_Currency",
+                "type": "foreignKey",
+                "table": "CODBEX_PAYROLLENTRY",
+                "constraintName": "PayrollEntry_Currency",
+                "columns": "PAYROLLENTRY_CURRENCY",
+                "referencedTable": "CODBEX_CURRENCY",
+                "referencedColumns": "CURRENCY_ID"
             },
             {
                 "name": "PayrollEntry_PayrollStatus",

@@ -126,6 +126,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				selectedMainEntityId: entity.Id,
 				optionsEmployee: $scope.optionsEmployee,
+				optionsCurrency: $scope.optionsCurrency,
 				optionsStatus: $scope.optionsStatus,
 			});
 		};
@@ -137,6 +138,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("createEntity", {
 				entity: {},
 				optionsEmployee: $scope.optionsEmployee,
+				optionsCurrency: $scope.optionsCurrency,
 				optionsStatus: $scope.optionsStatus,
 			});
 		};
@@ -146,6 +148,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
 				optionsEmployee: $scope.optionsEmployee,
+				optionsCurrency: $scope.optionsCurrency,
 				optionsStatus: $scope.optionsStatus,
 			});
 		};
@@ -184,12 +187,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("PayrollEntry-filter", {
 				entity: $scope.filterEntity,
 				optionsEmployee: $scope.optionsEmployee,
+				optionsCurrency: $scope.optionsCurrency,
 				optionsStatus: $scope.optionsStatus,
 			});
 		};
 
 		//----------------Dropdowns-----------------//
 		$scope.optionsEmployee = [];
+		$scope.optionsCurrency = [];
 		$scope.optionsStatus = [];
 
 
@@ -198,6 +203,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				return {
 					value: e.Id,
 					text: e.Name
+				}
+			});
+		});
+
+		$http.get("/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts").then(function (response) {
+			$scope.optionsCurrency = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Code
 				}
 			});
 		});
@@ -215,6 +229,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsEmployee.length; i++) {
 				if ($scope.optionsEmployee[i].value === optionKey) {
 					return $scope.optionsEmployee[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsCurrencyValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsCurrency.length; i++) {
+				if ($scope.optionsCurrency[i].value === optionKey) {
+					return $scope.optionsCurrency[i].text;
 				}
 			}
 			return null;

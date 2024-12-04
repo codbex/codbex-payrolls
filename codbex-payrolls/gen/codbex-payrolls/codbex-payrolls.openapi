@@ -1605,6 +1605,7 @@ components:
       required:
         - Employee
         - Title
+        - Currency
         - StartDate
         - EndDate
         - Status
@@ -1623,6 +1624,9 @@ components:
           type: number
           format: double
           readOnly: true
+        Currency:
+          type: integer
+          format: int32
         StartDate:
         EndDate:
         Status:
@@ -1673,6 +1677,14 @@ components:
                       items:
                         type: number
                         format: double
+                Currency:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 StartDate:
                   oneOf:
                 EndDate:
@@ -1725,6 +1737,14 @@ components:
                       items:
                         type: number
                         format: double
+                Currency:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 StartDate:
                   oneOf:
                 EndDate:
@@ -1749,6 +1769,7 @@ components:
                   minLength: 0
                   maxLength: 100
                 Amount:
+                Currency:
                 StartDate:
                 EndDate:
                 Status:
@@ -1769,6 +1790,9 @@ components:
                 Amount:
                   type: number
                   format: double
+                Currency:
+                  type: integer
+                  format: int32
                 StartDate:
                 EndDate:
                 Status:
@@ -1791,6 +1815,9 @@ components:
                 Amount:
                   type: number
                   format: double
+                Currency:
+                  type: integer
+                  format: int32
                 StartDate:
                 EndDate:
                 Status:
@@ -1813,6 +1840,9 @@ components:
                 Amount:
                   type: number
                   format: double
+                Currency:
+                  type: integer
+                  format: int32
                 StartDate:
                 EndDate:
                 Status:
@@ -1835,6 +1865,9 @@ components:
                 Amount:
                   type: number
                   format: double
+                Currency:
+                  type: integer
+                  format: int32
                 StartDate:
                 EndDate:
                 Status:
@@ -1843,12 +1876,12 @@ components:
                 PayDate:
         $select:
           type: array
-          example: ["Id", "Employee", "Title", "Amount", "StartDate", "EndDate", "Status", "PayDate"]
+          example: ["Id", "Employee", "Title", "Amount", "Currency", "StartDate", "EndDate", "Status", "PayDate"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Employee,Title,Amount,StartDate,EndDate,Status,PayDate"
+            example: "Id,Employee,Title,Amount,Currency,StartDate,EndDate,Status,PayDate"
         $order:
           type: string
           enum: ["asc", "desc"]
