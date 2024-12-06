@@ -5,6 +5,7 @@ export interface Payroll {
     readonly employee: number,
     readonly title: string,
     readonly amount: number,
+    readonly currency: number,
     readonly startDate: Date,
     readonly endDate: Date,
     readonly payrollStatus: number
@@ -20,8 +21,8 @@ export interface PayrollEntryItem {
 export class GeneratePayrollsService {
 
     public static savePayroll(payrollsData: Payroll) {
-        const sql = `INSERT INTO "CODBEX_PAYROLLENTRY" ("PAYROLLENTRY_ID","PAYROLLENTRY_EMPLOYEE", "PAYROLLENTRY_TITLE","PAYROLLENTRY_AMOUNT","PAYROLLENTRY_STARTDATE","PAYROLLENTRY_ENDDATE","PAYROLLENTRY_STATUS") values (?, ?, ?, ?, ?,?,?)`;
-        const queryParameters = [payrollsData.id, payrollsData.employee, payrollsData.title, payrollsData.amount, payrollsData.startDate, payrollsData.endDate, payrollsData.payrollStatus];
+        const sql = `INSERT INTO "CODBEX_PAYROLLENTRY" ("PAYROLLENTRY_ID","PAYROLLENTRY_EMPLOYEE", "PAYROLLENTRY_TITLE","PAYROLLENTRY_AMOUNT","PAYROLLENTRY_CURRENCY","PAYROLLENTRY_STARTDATE","PAYROLLENTRY_ENDDATE","PAYROLLENTRY_STATUS") values (?,?, ?, ?, ?, ?,?,?)`;
+        const queryParameters = [payrollsData.id, payrollsData.employee, payrollsData.title, payrollsData.amount, payrollsData.currency, payrollsData.startDate, payrollsData.endDate, payrollsData.payrollStatus];
         insert.execute(sql, queryParameters);
     }
 

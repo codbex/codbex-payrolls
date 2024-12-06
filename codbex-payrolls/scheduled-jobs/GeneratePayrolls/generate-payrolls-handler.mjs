@@ -5,8 +5,11 @@ import { SalaryRepository } from "codbex-salaries/gen/codbex-salaries/dao/Salari
 import { SalaryItemRepository } from "codbex-salaries/gen/codbex-salaries/dao/Salaries/SalaryItemRepository";
 import { PayrollEntryRepository } from "codbex-payrolls/gen/codbex-payrolls/dao/Payrolls/PayrollEntryRepository";
 import { PayrollEntryItemRepository } from "codbex-payrolls/gen/codbex-payrolls/dao/Payrolls/PayrollEntryItemRepository";
+import { CurrencyRepository } from "codbex-currencies/gen/codbex-currencies/dao/Currencies/CurrencyRepository";
+
 
 const PayrollDao = new PayrollEntryRepository();
+const CurrencyDao = new CurrencyRepository();
 const EmployeeDao = new EmployeeRepository();
 const SalaryDao = new SalaryRepository();
 const SalaryItemDao = new SalaryItemRepository();
@@ -28,18 +31,6 @@ employees.forEach((employee) => {
 
     const payrollId = PayrollDao.count() + 1;
 
-    const payroll = {
-        "id": payrollId,
-        "employee": employee.Id,
-        "title": payrollTitle,
-        "amount": 0,
-        "startDate": firstDayOfMonth.toLocaleDateString('en-CA'),
-        "endDate": lastDayOfMonth.toLocaleDateString('en-CA'),
-        "payrollStatus": 2
-    };
-
-    GeneratePayrollsService.savePayroll(payroll);
-
     const salary = SalaryDao.findAll({
         $filter: {
             equals: {
@@ -47,6 +38,27 @@ employees.forEach((employee) => {
             }
         }
     });
+
+    const currencies = CurrencyDao.findAll({
+        $filter: {
+            equals: {
+                Id: salary[0].Currency
+            }
+        }
+    });
+
+    const payroll = {
+        "id": payrollId,
+        "employee": employee.Id,
+        "title": payrollTitle,
+        "amount": 0,
+        "currency": currencies[0].Id,
+        "startDate": firstDayOfMonth.toLocaleDateString('en-CA'),
+        "endDate": lastDayOfMonth.toLocaleDateString('en-CA'),
+        "payrollStatus": 2
+    };
+
+    GeneratePayrollsService.savePayroll(payroll);
 
     const salaryItems = SalaryItemDao.findAll({
         $filter: {

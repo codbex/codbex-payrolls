@@ -19,7 +19,6 @@ angular.module('upcoming-taxes-payment', ['ideUI', 'ideView'])
 
         $http.get(payrollsServiceUrl)
             .then(function (response) {
-                console.log(response.data);
                 $scope.currencyForTaxes = response.data.currencyForTaxes;
                 $scope.taxesSum = response.data.taxesSum;
             })
