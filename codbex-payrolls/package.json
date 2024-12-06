@@ -1,6 +1,6 @@
 {
     "name": "@codbex/codbex-payrolls",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "repository": {
         "url": "https://github.com/codbex/codbex-payrolls.git",
         "type": "git"
@@ -8,8 +8,7 @@
     "publishConfig": {
         "registry": "https://npm.pkg.github.com"
     },
-    "dependencies":
-    {
+    "dependencies": {
         "@codbex/codbex-payments": "0.6.0",
         "@codbex/codbex-payroll-payment-ext": "0.2.0"
     }
