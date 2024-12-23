@@ -8,6 +8,9 @@
     "publishConfig": {
         "registry": "https://npm.pkg.github.com"
     },
+    "scripts": {
+        "build": "tsc"
+    },
     "dependencies": {
         "@codbex/codbex-payments": "0.6.0",
         "@codbex/codbex-payroll-payment-ext": "0.2.0"
