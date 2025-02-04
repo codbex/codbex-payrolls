@@ -34,7 +34,6 @@ app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'mess
             return $http.get(salaryUrl + $scope.PayrollData.Employee);
         })
         .then(function (response) {
-            console.log(response.data);
             $scope.SalaryData = response.data;
         });
 
@@ -53,8 +52,8 @@ app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'mess
         $http.post(employeePaymentUrl, employeePayment)
             .then(function (response) {
 
-                $scope.PayrollData.PayDate = new Date().getTime();
-                $scope.PayrollData.PayrollStatus = 1;
+                $scope.PayrollData.PayDate = new Date().toLocaleDateString('en-CA');
+                $scope.PayrollData.Status = 1;
 
                 $http.put(payrollUpdateUrl + $scope.PayrollData.Id, $scope.PayrollData)
                     .then(function (response) {
@@ -62,15 +61,15 @@ app.controller('templateController', ['$scope', '$http', 'ViewParameters', 'mess
                         $scope.closeDialog();
                     })
                     .catch(function (error) {
-                        console.error("Error updating Payroll entry", error);
+                        console.error("Error updating Employee Payment", error);
                     });;
 
             })
             .catch(function (error) {
                 console.error("Error creating Employee payment", error);
             });
-        ;
 
+        messageHub.showAlertSuccess("EmployeePayment", "Employee Payment successfully created");
     };
 
     $scope.closeDialog = function () {

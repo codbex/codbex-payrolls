@@ -33,7 +33,8 @@ class GenerateEmployeePaymentService {
             "Status": payrollEntry.Status,
             "StartDate": payrollEntry.StartDate,
             "EndDate": payrollEntry.EndDate,
-            "PayDate": payrollEntry.PayDate
+            "PayDate": payrollEntry.PayDate,
+            "Currency": payrollEntry.Currency
         };
     }
 
