@@ -7,12 +7,6 @@
     },
     "dependencies": [
         {
-            "guid": "codbex-payroll-payment-ext",
-            "type": "git",
-            "url": "https://github.com/codbex/codbex-payroll-payment-ext.git",
-            "branch": "main"
-        },
-        {
             "guid": "codbex-payments",
             "type": "git",
             "url": "https://github.com/codbex/codbex-payments.git",

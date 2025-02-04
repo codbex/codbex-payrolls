@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="templateApp" ng-controller="templateController">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
+        <title dg-view-title></title>
+        <script type="text/javascript" src="employee-payment-generate.js"></script>
+        <script type="text/javascript" src="/services/js/resources-core/services/loader.js?id=ide-view-js"></script>
+        <link type="text/css" rel="stylesheet" href="/services/js/resources-core/services/loader.js?id=ide-view-css" />
+        <theme></theme>
+        <link rel="stylesheet" type="text/css"
+            href="/services/web/codbex-payrolls/ext/generate/EmployeePayment/employee-payment-generate.css">
+        <script
+            src="/services/web/codbex-payrolls/ext/generate/EmployeePayment/employee-payment-generate-controller.js">
+        </script>
+    </head>
+
+    <body>
+        <div class="dialog" id="dialog" ng-show="showDialog">
+            <div class="dialog-content">
+                <div class="title">Pay salary</div>
+                <div class="line"></div>
+
+                <div class="main-text" ng-if="Paid">
+                    <p>You have already paid {{Employee.Name}}'s salary for {{MonthName}} {{Year}}</p>
+                </div>
+                <div class="main-text" ng-if="!Paid">
+                    <p>You will pay <b>{{SalaryData.Net}} {{SalaryData.CurrencyCode}}</b> and <b>{{SalaryData.Taxes}}
+                            {{SalaryData.CurrencyCode}}</b> as taxes to {{Employee.Name}} for
+                        {{MonthName}} {{Year}}
+                    </p>
+                </div>
+
+                <div class="dialog-buttons" ng-if="!Paid">
+                    <button ng-click="paySalary()" class="button green-button">Yes</button>
+                    <button ng-click="closeDialog()" class="button red-button">No</button>
+                </div>
+
+                <div class="dialog-buttons" ng-if="Paid">
+                    <button ng-click="closeDialog()" class="button">Close</button>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
