@@ -60,6 +60,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
 			}
+			if (entity.Number) {
+				filter.$filter.contains.Number = entity.Number;
+			}
 			if (entity.Employee !== undefined) {
 				filter.$filter.equals.Employee = entity.Employee;
 			}

@@ -3,9 +3,12 @@ import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
+// custom imports
+import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
 
 export interface PayrollEntryEntity {
     readonly Id: number;
+    Number?: string;
     Employee?: number;
     Title?: string;
     Amount?: number;
@@ -34,6 +37,7 @@ export interface PayrollEntryEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
+            Number?: string | string[];
             Employee?: number | number[];
             Title?: string | string[];
             Amount?: number | number[];
@@ -45,6 +49,7 @@ export interface PayrollEntryEntityOptions {
         };
         notEquals?: {
             Id?: number | number[];
+            Number?: string | string[];
             Employee?: number | number[];
             Title?: string | string[];
             Amount?: number | number[];
@@ -56,6 +61,7 @@ export interface PayrollEntryEntityOptions {
         };
         contains?: {
             Id?: number;
+            Number?: string;
             Employee?: number;
             Title?: string;
             Amount?: number;
@@ -67,6 +73,7 @@ export interface PayrollEntryEntityOptions {
         };
         greaterThan?: {
             Id?: number;
+            Number?: string;
             Employee?: number;
             Title?: string;
             Amount?: number;
@@ -78,6 +85,7 @@ export interface PayrollEntryEntityOptions {
         };
         greaterThanOrEqual?: {
             Id?: number;
+            Number?: string;
             Employee?: number;
             Title?: string;
             Amount?: number;
@@ -89,6 +97,7 @@ export interface PayrollEntryEntityOptions {
         };
         lessThan?: {
             Id?: number;
+            Number?: string;
             Employee?: number;
             Title?: string;
             Amount?: number;
@@ -100,6 +109,7 @@ export interface PayrollEntryEntityOptions {
         };
         lessThanOrEqual?: {
             Id?: number;
+            Number?: string;
             Employee?: number;
             Title?: string;
             Amount?: number;
@@ -143,6 +153,11 @@ export class PayrollEntryRepository {
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
+            },
+            {
+                name: "Number",
+                column: "PAYROLLENTRY_NUMBER",
+                type: "VARCHAR",
             },
             {
                 name: "Employee",
@@ -214,6 +229,8 @@ export class PayrollEntryRepository {
         EntityUtils.setLocalDate(entity, "StartDate");
         EntityUtils.setLocalDate(entity, "EndDate");
         EntityUtils.setLocalDate(entity, "PayDate");
+        // @ts-ignore
+        (entity as PayrollEntryEntity).Number = new NumberGeneratorService().generate(31);
         if (entity.Amount === undefined || entity.Amount === null) {
             (entity as PayrollEntryEntity).Amount = 0;
         }

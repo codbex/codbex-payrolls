@@ -18,6 +18,21 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(31)",
+                        "dataLength": "20",
+                        "dataName": "PAYROLLENTRY_NUMBER",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "description": "",
+                        "isCalculatedProperty": "true",
+                        "name": "Number",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
                         "dataName": "PAYROLLENTRY_EMPLOYEE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -148,6 +163,7 @@
                 "description": "Manage entity PayrollEntry",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
+                "importsCode": "aW1wb3J0IHsgTnVtYmVyR2VuZXJhdG9yU2VydmljZSB9IGZyb20gIi9jb2RiZXgtbnVtYmVyLWdlbmVyYXRvci9zZXJ2aWNlL2dlbmVyYXRvciI7",
                 "layoutType": "MANAGE_MASTER",
                 "menuIndex": "100",
                 "menuKey": "payrollentry",
