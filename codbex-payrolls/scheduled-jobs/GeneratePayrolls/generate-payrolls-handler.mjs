@@ -7,7 +7,6 @@ import { PayrollEntryRepository } from "codbex-payrolls/gen/codbex-payrolls/dao/
 import { PayrollEntryItemRepository } from "codbex-payrolls/gen/codbex-payrolls/dao/Payrolls/PayrollEntryItemRepository";
 import { CurrencyRepository } from "codbex-currencies/gen/codbex-currencies/dao/Currencies/CurrencyRepository";
 
-
 const PayrollDao = new PayrollEntryRepository();
 const CurrencyDao = new CurrencyRepository();
 const EmployeeDao = new EmployeeRepository();
