@@ -3,6 +3,8 @@ import { Extensions } from "sdk/extensions"
 import { PayrollEntryRepository, PayrollEntryEntityOptions } from "../../dao/Payrolls/PayrollEntryRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
+// custom imports
+import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
 
 const validationModules = await Extensions.loadExtensionModules("codbex-payrolls-Payrolls-PayrollEntry", ["validate"]);
 
@@ -119,6 +121,9 @@ class PayrollEntryService {
     }
 
     private validateEntity(entity: any): void {
+        if (entity.Number?.length > 20) {
+            throw new ValidationError(`The 'Number' exceeds the maximum length of [20] characters`);
+        }
         if (entity.Employee === null || entity.Employee === undefined) {
             throw new ValidationError(`The 'Employee' property is required, provide a valid value`);
         }
