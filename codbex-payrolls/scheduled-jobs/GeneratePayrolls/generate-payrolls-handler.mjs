@@ -6,8 +6,6 @@ import { SalaryItemRepository } from "codbex-salaries/gen/codbex-salaries/dao/Sa
 import { PayrollEntryRepository } from "codbex-payrolls/gen/codbex-payrolls/dao/Payrolls/PayrollEntryRepository";
 import { PayrollEntryItemRepository } from "codbex-payrolls/gen/codbex-payrolls/dao/Payrolls/PayrollEntryItemRepository";
 import { CurrencyRepository } from "codbex-currencies/gen/codbex-currencies/dao/Currencies/CurrencyRepository";
-import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
-
 
 const PayrollDao = new PayrollEntryRepository();
 const CurrencyDao = new CurrencyRepository();
@@ -50,7 +48,6 @@ employees.forEach((employee) => {
 
     const payroll = {
         "id": payrollId,
-        "numberGen": NumberGeneratorService.generate(payrollId),
         "employee": employee.Id,
         "title": payrollTitle,
         "amount": 0,
