@@ -1,1 +1,6 @@
-{"module":"codbex-payrolls/gen/codbex-payrolls/ui/Payrolls/PayrollEntry/tile.js","extensionPoint":"codbex-payrolls-tile","description":"codbex-payrolls - Application Tile"}
+{
+    "module": "codbex-payrolls/gen/codbex-payrolls/ui/Payrolls/PayrollEntry/tile.js",
+    "extensionPoint": "codbex-payrolls-tile",
+    "description": "codbex-payrolls - Application Tile",
+    "role": "codbex-payrolls.Payrolls.PayrollEntryReadOnly,codbex-payrolls.Payrolls.PayrollEntryFullAccess"
+}

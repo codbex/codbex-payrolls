@@ -190,7 +190,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsType = [];
 
 
-		$http.get("/services/ts/codbex-payrolls/gen/codbex-payrolls/api/entities/PayrollEntryItemTypeService.ts").then(function (response) {
+		$http.get("/services/ts/codbex-payrolls/gen/codbex-payrolls/api/Settings/PayrollEntryItemTypeService.ts").then(function (response) {
 			$scope.optionsType = response.data.map(e => {
 				return {
 					value: e.Id,

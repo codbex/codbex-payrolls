@@ -110,5 +110,9 @@
             "type": "DATE",
             "initial": "2024-11-01"
         }
-    ]
+    ],
+    "security": {
+        "generateDefaultRoles": "true",
+        "roleRead": "codbex-payrolls.Report.PayrollsSummaryReadOnly"
+    }
 }

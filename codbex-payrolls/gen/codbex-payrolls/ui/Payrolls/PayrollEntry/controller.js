@@ -216,7 +216,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-payrolls/gen/codbex-payrolls/api/entities/PayrollStatusService.ts").then(function (response) {
+		$http.get("/services/ts/codbex-payrolls/gen/codbex-payrolls/api/Settings/PayrollStatusService.ts").then(function (response) {
 			$scope.optionsStatus = response.data.map(e => {
 				return {
 					value: e.Id,

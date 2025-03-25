@@ -1,0 +1,6 @@
+[
+    {
+        "name": "codbex-payrolls.Report.PayrollsSummaryReadOnly",
+        "description": "A role that grants read only permission for PayrollsSummary."
+    }
+]

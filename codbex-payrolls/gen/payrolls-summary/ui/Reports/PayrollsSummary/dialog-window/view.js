@@ -7,7 +7,7 @@ const viewData = {
     id: "PayrollsSummary-Report-details",
     label: "PayrollsSummary Report",
     link: "/services/web/codbex-payrolls/gen/payrolls-summary/ui/Reports/PayrollsSummary/dialog-window/index.html",
-    perspectiveName: "Reports",
+    perspectiveName: "Reports"
 };
 
 if (typeof exports !== 'undefined') {

@@ -1,0 +1,34 @@
+[
+    {
+        "name": "codbex-payrolls.Payrolls.PayrollEntryReadOnly",
+        "description": "A role that grants read only permission for PayrollEntry."
+    },
+    {
+        "name": "codbex-payrolls.Payrolls.PayrollEntryFullAccess",
+        "description": "A role that grants full access for PayrollEntry."
+    },
+    {
+        "name": "codbex-payrolls.Settings.PayrollStatusReadOnly",
+        "description": "A role that grants read only permission for PayrollStatus."
+    },
+    {
+        "name": "codbex-payrolls.Settings.PayrollStatusFullAccess",
+        "description": "A role that grants full access for PayrollStatus."
+    },
+    {
+        "name": "codbex-payrolls.Payrolls.PayrollEntryItemReadOnly",
+        "description": "A role that grants read only permission for PayrollEntryItem."
+    },
+    {
+        "name": "codbex-payrolls.Payrolls.PayrollEntryItemFullAccess",
+        "description": "A role that grants full access for PayrollEntryItem."
+    },
+    {
+        "name": "codbex-payrolls.Settings.PayrollEntryItemTypeReadOnly",
+        "description": "A role that grants read only permission for PayrollEntryItemType."
+    },
+    {
+        "name": "codbex-payrolls.Settings.PayrollEntryItemTypeFullAccess",
+        "description": "A role that grants full access for PayrollEntryItemType."
+    }
+]

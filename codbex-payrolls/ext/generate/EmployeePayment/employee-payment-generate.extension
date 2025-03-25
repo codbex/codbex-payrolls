@@ -1,5 +1,6 @@
 {
     "extensionPoint": "codbex-payrolls-custom-action",
     "module": "codbex-payrolls/ext/generate/EmployeePayment/employee-payment-generate.js",
-    "description": "Generate Employee Payment From Payroll Entry Custom Action"
+    "description": "Generate Employee Payment From Payroll Entry Custom Action",
+    "role": "codbex-payrolls.Payrolls.PayrollEntryReadOnly,codbex-payrolls.Payrolls.PayrollEntryFullAccess"
 }

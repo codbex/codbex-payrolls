@@ -1,1 +1,6 @@
-{"module":"codbex-payrolls/gen/codbex-payrolls/ui/Payrolls/PayrollEntry/view.js","extensionPoint":"codbex-payrolls-view","description":"codbex-payrolls - Application View"}
+{
+    "module": "codbex-payrolls/gen/codbex-payrolls/ui/Payrolls/PayrollEntry/view.js",
+    "extensionPoint": "codbex-payrolls-view",
+    "description": "codbex-payrolls - Application View",
+    "role": "codbex-payrolls.Payrolls.PayrollEntryReadOnly,codbex-payrolls.Payrolls.PayrollEntryFullAccess"
+}

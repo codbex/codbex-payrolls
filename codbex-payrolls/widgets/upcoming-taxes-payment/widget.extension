@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-widgets",
     "module": "codbex-payrolls/widgets/upcoming-taxes-payment/service.js",
-    "description": "Upcoming Tax Payment Sum"
+    "description": "Upcoming Tax Payment Sum",
+    "role": "codbex-payrolls.Payrolls.PayrollEntryReadOnly,codbex-payrolls.Payrolls.PayrollEntryFullAccess"
 }
