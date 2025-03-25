@@ -1,5 +1,6 @@
 {
     "module": "codbex-payrolls/gen/payrolls-summary/ui/Reports/perspective-navigation.js",
     "extensionPoint": "dashboard-navigations",
-    "description": "Payrolls Summary - Navigation"
+    "description": "Payrolls Summary - Navigation",
+    "role": "codbex-payrolls.Report.PayrollsSummaryReadOnly"
 }

@@ -1,0 +1,6 @@
+{
+    "module": "codbex-payrolls/gen/codbex-payrolls/ui/Settings/PayrollEntryItemType/tile.js",
+    "extensionPoint": "portal-tile",
+    "description": "codbex-payrolls - Application Tile",
+    "role": "codbex-payrolls.Settings.PayrollEntryItemTypeReadOnly,codbex-payrolls.Settings.PayrollEntryItemTypeFullAccess"
+}

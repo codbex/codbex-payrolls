@@ -1,0 +1,6 @@
+{
+    "module": "codbex-payrolls/gen/codbex-payrolls/ui/Settings/PayrollEntryItemType/dialog-window/view.js",
+    "extensionPoint": "dialog-window",
+    "description": "codbex-payrolls - Application Dialog Window",
+    "role": "codbex-payrolls.Settings.PayrollEntryItemTypeReadOnly,codbex-payrolls.Settings.PayrollEntryItemTypeFullAccess"
+}

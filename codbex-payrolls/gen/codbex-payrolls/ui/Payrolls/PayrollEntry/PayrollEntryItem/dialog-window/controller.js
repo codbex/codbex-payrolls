@@ -56,7 +56,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		};
 
-		$scope.serviceType = "/services/ts/codbex-payrolls/gen/codbex-payrolls/api/entities/PayrollEntryItemTypeService.ts";
+		$scope.serviceType = "/services/ts/codbex-payrolls/gen/codbex-payrolls/api/Settings/PayrollEntryItemTypeService.ts";
 
 		$scope.cancel = function () {
 			$scope.entity = {};

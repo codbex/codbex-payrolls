@@ -1,0 +1,6 @@
+{
+    "module": "codbex-payrolls/gen/codbex-payrolls/ui/Settings/PayrollStatus/view.js",
+    "extensionPoint": "codbex-payrolls-view",
+    "description": "codbex-payrolls - Application View",
+    "role": "codbex-payrolls.Settings.PayrollStatusReadOnly,codbex-payrolls.Settings.PayrollStatusFullAccess"
+}

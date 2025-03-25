@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-navigations",
     "module": "codbex-payrolls/navigations/payrolls/service.js",
-    "description": "Payrolls Navigation"
+    "description": "Payrolls Navigation",
+    "role": "codbex-payrolls.Payrolls.PayrollEntryReadOnly,codbex-payrolls.Payrolls.PayrollEntryFullAccess"
 }

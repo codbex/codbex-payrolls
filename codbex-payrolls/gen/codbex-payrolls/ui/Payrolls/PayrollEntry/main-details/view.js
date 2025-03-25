@@ -9,7 +9,7 @@ const viewData = {
     factory: "frame",
     region: "center",
     link: "/services/web/codbex-payrolls/gen/codbex-payrolls/ui/Payrolls/PayrollEntry/main-details/index.html",
-    perspectiveName: "Payrolls",
+    perspectiveName: "Payrolls"
 };
 
 if (typeof exports !== 'undefined') {

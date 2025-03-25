@@ -7,7 +7,7 @@ const viewData = {
     id: "PayrollEntryItem-details",
     label: "PayrollEntryItem",
     link: "/services/web/codbex-payrolls/gen/codbex-payrolls/ui/Payrolls/PayrollEntry/PayrollEntryItem/dialog-window/index.html",
-    perspectiveName: "Payrolls",
+    perspectiveName: "Payrolls"
 };
 
 if (typeof exports !== 'undefined') {
