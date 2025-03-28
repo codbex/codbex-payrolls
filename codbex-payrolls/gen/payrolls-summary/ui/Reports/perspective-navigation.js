@@ -8,7 +8,7 @@ const navigationData = {
 	label: 'Payrolls Summary',
 	group: 'reports',
 	link: '/services/web/codbex-payrolls/gen/payrolls-summary/ui/Reports/PayrollsSummary/index.html',
-	order: $navigationOrder
+	order: 1100
 };
 
 function getNavigation() {

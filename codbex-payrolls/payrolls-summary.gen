@@ -1,16 +1,17 @@
 {
   "brand": "codbex",
-  "brandUrl": "https://www.codbex.com/",
+  "brandUrl": "https://www.codbex.com",
   "title": "Payrolls Summary",
+  "navigationOrder": "1100",
+  "projectName": "codbex-payrolls",
+  "workspaceName": "workspace",
+  "filePath": "payrolls-summary.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "fileName": "payrolls-summary",
   "genFolderName": "payrolls-summary",
   "extensionPoint": "codbex-payrolls",
   "name": "PayrollsSummary",
   "perspectiveName": "PayrollsSummary",
-  "projectName": "codbex-payrolls",
-  "workspaceName": "workspace",
-  "filePath": "payrolls-summary.report",
-  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "roles": [
     {
       "entityName": "PayrollsSummary",
