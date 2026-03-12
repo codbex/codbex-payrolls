@@ -4,16 +4,17 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "PayrollStatus",
-    label: "PayrollStatus",
-    factory: "frame",
-    region: "center",
-    link: "/services/web/codbex-payrolls/gen/codbex-payrolls/ui/Settings/PayrollStatus/index.html",
-    perspectiveName: "Settings"
+    id: 'PayrollStatus',
+    label: 'PayrollStatus',
+    translation: {
+        key: 'codbex-payrolls:codbex-payrolls-model.t.PAYROLLSTATUS',
+    },
+    region: 'center',
+    lazyLoad: false,
+	autoFocusTab: true,
+    path: '/services/web/codbex-payrolls/gen/codbex-payrolls/ui/Settings/PayrollStatus/index.html',
+    perspectiveName: 'Settings'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
-        return viewData;
-    }
+	exports.getView = () => viewData;
 }

@@ -4,16 +4,17 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "PayrollEntryItemType",
-    label: "PayrollEntryItemType",
-    factory: "frame",
-    region: "center",
-    link: "/services/web/codbex-payrolls/gen/codbex-payrolls/ui/Settings/PayrollEntryItemType/index.html",
-    perspectiveName: "Settings"
+    id: 'PayrollEntryItemType',
+    label: 'PayrollEntryItemType',
+    translation: {
+        key: 'codbex-payrolls:codbex-payrolls-model.t.PAYROLLENTRYITEMTYPE',
+    },
+    region: 'center',
+    lazyLoad: false,
+	autoFocusTab: true,
+    path: '/services/web/codbex-payrolls/gen/codbex-payrolls/ui/Settings/PayrollEntryItemType/index.html',
+    perspectiveName: 'Settings'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
-        return viewData;
-    }
+	exports.getView = () => viewData;
 }

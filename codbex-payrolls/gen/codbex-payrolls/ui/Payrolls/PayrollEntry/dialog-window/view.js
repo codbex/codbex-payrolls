@@ -6,15 +6,15 @@
 const viewData = {
     id: "PayrollEntry-details",
     label: "PayrollEntry",
-    link: "/services/web/codbex-payrolls/gen/codbex-payrolls/ui/Payrolls/PayrollEntry/dialog-window/index.html",
+    translation: {
+        key: 'codbex-payrolls:codbex-payrolls-model.t.PAYROLLENTRY',
+    },
+    path: "/services/web/codbex-payrolls/gen/codbex-payrolls/ui/Payrolls/PayrollEntry/dialog-window/index.html",
     perspectiveName: "Payrolls",
     roles: [
         "codbex-payrolls.Payrolls.PayrollEntryReadOnly",
     ]
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
 // custom imports
 import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
@@ -122,12 +122,13 @@ export interface PayrollEntryEntityOptions {
     },
     $select?: (keyof PayrollEntryEntity)[],
     $sort?: string | (keyof PayrollEntryEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface PayrollEntryEntityEvent {
+export interface PayrollEntryEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<PayrollEntryEntity>;
@@ -138,7 +139,7 @@ interface PayrollEntryEntityEvent {
     }
 }
 
-interface PayrollEntryUpdateEntityEvent extends PayrollEntryEntityEvent {
+export interface PayrollEntryUpdateEntityEvent extends PayrollEntryEntityEvent {
     readonly previousEntity: PayrollEntryEntity;
 }
 
@@ -205,19 +206,20 @@ export class PayrollEntryRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(PayrollEntryRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(PayrollEntryRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: PayrollEntryEntityOptions): PayrollEntryEntity[] {
-        return this.dao.list(options).map((e: PayrollEntryEntity) => {
+    public findAll(options: PayrollEntryEntityOptions = {}): PayrollEntryEntity[] {
+        let list = this.dao.list(options).map((e: PayrollEntryEntity) => {
             EntityUtils.setDate(e, "StartDate");
             EntityUtils.setDate(e, "EndDate");
             EntityUtils.setDate(e, "PayDate");
             return e;
         });
+        return list;
     }
 
-    public findById(id: number): PayrollEntryEntity | undefined {
+    public findById(id: number, options: PayrollEntryEntityOptions = {}): PayrollEntryEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setDate(entity, "StartDate");
         EntityUtils.setDate(entity, "EndDate");
@@ -230,7 +232,7 @@ export class PayrollEntryRepository {
         EntityUtils.setLocalDate(entity, "EndDate");
         EntityUtils.setLocalDate(entity, "PayDate");
         // @ts-ignore
-        (entity as PayrollEntryEntity).Number = new NumberGeneratorService().generate(31);
+        (entity as PayrollEntryEntity).Number = new NumberGeneratorService().generateByType('Payroll Entry');
         if (entity.Amount === undefined || entity.Amount === null) {
             (entity as PayrollEntryEntity).Amount = 0;
         }

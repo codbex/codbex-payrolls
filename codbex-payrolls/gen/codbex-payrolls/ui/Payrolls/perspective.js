@@ -5,14 +5,14 @@
  */
 const perspectiveData = {
 	id: 'Payrolls',
-	name: 'Payrolls',
-	link: '/services/web/codbex-payrolls/gen/codbex-payrolls/ui/Payrolls/index.html',
-	order: '13',
+	label: 'Payrolls',
+	translation: {
+        key: 'codbex-payrolls:codbex-payrolls-model.t.PAYROLLENTRY',
+    },
+	path: '/services/web/codbex-payrolls/gen/codbex-payrolls/ui/Payrolls/index.html',
+	order: 13,
 	icon: '/services/web/resources/unicons/bill.svg'
 };
-
 if (typeof exports !== 'undefined') {
-	exports.getPerspective = function () {
-		return perspectiveData;
-	}
+	exports.getPerspective = () => perspectiveData;
 }

@@ -4,14 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "PayrollStatus-details",
-    label: "PayrollStatus",
-    link: "/services/web/codbex-payrolls/gen/codbex-payrolls/ui/Settings/PayrollStatus/dialog-window/index.html",
-    perspectiveName: "Settings"
+    id: 'PayrollStatus-details',
+    label: 'PayrollStatus',
+    translation: {
+        key: 'codbex-payrolls:codbex-payrolls-model.t.PAYROLLSTATUS',
+    },
+    path: '/services/web/codbex-payrolls/gen/codbex-payrolls/ui/Settings/PayrollStatus/dialog-window/index.html',
+    perspectiveName: 'Settings'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

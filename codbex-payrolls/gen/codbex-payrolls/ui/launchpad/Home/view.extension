@@ -1,5 +1,0 @@
-{
-    "module": "codbex-payrolls/gen/codbex-payrolls/ui/launchpad/Home/view.js",
-    "extensionPoint": "codbex-payrolls-view",
-    "description": "codbex-payrolls - Application View"
-}

@@ -1,5 +1,6 @@
 {
     "module": "codbex-payrolls/gen/codbex-payrolls/ui/Payrolls/perspective.js",
-    "extensionPoint": "codbex-payrolls",
-    "description": "codbex-payrolls - Perspective - Payrolls"
+    "extensionPoint": "application-perspectives",
+    "description": "codbex-payrolls - Perspective - Payrolls",
+    "role": "codbex-payrolls.Payrolls.PayrollEntryReadOnly,codbex-payrolls.Payrolls.PayrollEntryFullAccess"
 }

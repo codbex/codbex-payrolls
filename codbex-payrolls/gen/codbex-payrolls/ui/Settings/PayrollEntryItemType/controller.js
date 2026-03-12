@@ -1,42 +1,54 @@
-angular.module('page', ["ideUI", "ideView", "entityApi"])
-	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-payrolls.Settings.PayrollEntryItemType';
+angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
+	.config(['EntityServiceProvider', (EntityServiceProvider) => {
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-payrolls/gen/codbex-payrolls/api/Settings/PayrollEntryItemTypeService.ts';
 	}])
-	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-payrolls/gen/codbex-payrolls/api/Settings/PayrollEntryItemTypeService.ts";
-	}])
-	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
+	.controller('PageController', ($scope, EntityService, Extensions, LocaleService, ButtonStates) => {
+		const Dialogs = new DialogHub();
+		let translated = {
+			yes: 'Yes',
+			no: 'No',
+			deleteConfirm: 'Are you sure you want to delete PayrollEntryItemType? This action cannot be undone.',
+			deleteTitle: 'Delete PayrollEntryItemType?'
+		};
+
+		LocaleService.onInit(() => {
+			translated.yes = LocaleService.t('codbex-payrolls:codbex-payrolls-model.defaults.yes');
+			translated.no = LocaleService.t('codbex-payrolls:codbex-payrolls-model.defaults.no');
+			translated.deleteTitle = LocaleService.t('codbex-payrolls:codbex-payrolls-model.defaults.deleteTitle', { name: '$t(codbex-payrolls:codbex-payrolls-model.t.PAYROLLENTRYITEMTYPE)' });
+			translated.deleteConfirm = LocaleService.t('codbex-payrolls:codbex-payrolls-model.messages.deleteConfirm', { name: '$t(codbex-payrolls:codbex-payrolls-model.t.PAYROLLENTRYITEMTYPE)' });
+		});
 
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
 		$scope.dataLimit = 20;
 
 		//-----------------Custom Actions-------------------//
-		Extensions.get('dialogWindow', 'codbex-payrolls-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "Settings" && e.view === "PayrollEntryItemType" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "Settings" && e.view === "PayrollEntryItemType" && e.type === "entity");
+		Extensions.getWindows(['codbex-payrolls-custom-action']).then((response) => {
+			$scope.pageActions = response.data.filter(e => e.perspective === 'Settings' && e.view === 'PayrollEntryItemType' && (e.type === 'page' || e.type === undefined));
+			$scope.entityActions = response.data.filter(e => e.perspective === 'Settings' && e.view === 'PayrollEntryItemType' && e.type === 'entity');
 		});
 
-		$scope.triggerPageAction = function (action) {
-			messageHub.showDialogWindow(
-				action.id,
-				{},
-				null,
-				true,
-				action
-			);
+		$scope.triggerPageAction = (action) => {
+			Dialogs.showWindow({
+				hasHeader: true,
+        		title: LocaleService.t(action.translation.key, action.translation.options, action.label),
+				path: action.path,
+				maxWidth: action.maxWidth,
+				maxHeight: action.maxHeight,
+				closeButton: true
+			});
 		};
 
-		$scope.triggerEntityAction = function (action) {
-			messageHub.showDialogWindow(
-				action.id,
-				{
+		$scope.triggerEntityAction = (action) => {
+			Dialogs.showWindow({
+				hasHeader: true,
+        		title: LocaleService.t(action.translation.key, action.translation.options, action.label),
+				path: action.path,
+				params: {
 					id: $scope.entity.Id
 				},
-				null,
-				true,
-				action
-			);
+				closeButton: true
+			});
 		};
 		//-----------------Custom Actions-------------------//
 
@@ -48,34 +60,28 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		resetPagination();
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("entityCreated", function (msg) {
+		Dialogs.addMessageListener({ topic: 'codbex-payrolls.Settings.PayrollEntryItemType.entityCreated', handler: () => {
 			$scope.loadPage($scope.dataPage, $scope.filter);
-		});
-
-		messageHub.onDidReceiveMessage("entityUpdated", function (msg) {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-payrolls.Settings.PayrollEntryItemType.entityUpdated', handler: () => {
 			$scope.loadPage($scope.dataPage, $scope.filter);
-		});
-
-		messageHub.onDidReceiveMessage("entitySearch", function (msg) {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-payrolls.Settings.PayrollEntryItemType.entitySearch', handler: (data) => {
 			resetPagination();
-			$scope.filter = msg.data.filter;
-			$scope.filterEntity = msg.data.entity;
+			$scope.filter = data.filter;
+			$scope.filterEntity = data.entity;
 			$scope.loadPage($scope.dataPage, $scope.filter);
-		});
+		}});
 		//-----------------Events-------------------//
 
-		$scope.loadPage = function (pageNumber, filter) {
+		$scope.loadPage = (pageNumber, filter) => {
 			if (!filter && $scope.filter) {
 				filter = $scope.filter;
 			}
 			$scope.dataPage = pageNumber;
-			entityApi.count(filter).then(function (response) {
-				if (response.status != 200) {
-					messageHub.showAlertError("PayrollEntryItemType", `Unable to count PayrollEntryItemType: '${response.message}'`);
-					return;
-				}
-				if (response.data) {
-					$scope.dataCount = response.data;
+			EntityService.count(filter).then((resp) => {
+				if (resp.data) {
+					$scope.dataCount = resp.data.count;
 				}
 				let offset = (pageNumber - 1) * $scope.dataLimit;
 				let limit = $scope.dataLimit;
@@ -83,81 +89,111 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (filter) {
 					filter.$offset = offset;
 					filter.$limit = limit;
-					request = entityApi.search(filter);
+					request = EntityService.search(filter);
 				} else {
-					request = entityApi.list(offset, limit);
+					request = EntityService.list(offset, limit);
 				}
-				request.then(function (response) {
-					if (response.status != 200) {
-						messageHub.showAlertError("PayrollEntryItemType", `Unable to list/filter PayrollEntryItemType: '${response.message}'`);
-						return;
-					}
+				request.then((response) => {
 					$scope.data = response.data;
+				}, (error) => {
+					const message = error.data ? error.data.message : '';
+					Dialogs.showAlert({
+						title: LocaleService.t('codbex-payrolls:codbex-payrolls-model.t.PAYROLLENTRYITEMTYPE'),
+						message: LocaleService.t('codbex-payrolls:codbex-payrolls-model.messages.error.unableToLF', { name: '$t(codbex-payrolls:codbex-payrolls-model.t.PAYROLLENTRYITEMTYPE)', message: message }),
+						type: AlertTypes.Error
+					});
+					console.error('EntityService:', error);
 				});
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: LocaleService.t('codbex-payrolls:codbex-payrolls-model.t.PAYROLLENTRYITEMTYPE'),
+					message: LocaleService.t('codbex-payrolls:codbex-payrolls-model.messages.error.unableToCount', { name: '$t(codbex-payrolls:codbex-payrolls-model.t.PAYROLLENTRYITEMTYPE)', message: message }),
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 		$scope.loadPage($scope.dataPage, $scope.filter);
 
-		$scope.selectEntity = function (entity) {
+		$scope.selectEntity = (entity) => {
 			$scope.selectedEntity = entity;
 		};
 
-		$scope.openDetails = function (entity) {
+		$scope.openDetails = (entity) => {
 			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("PayrollEntryItemType-details", {
-				action: "select",
-				entity: entity,
-			});
-		};
-
-		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("PayrollEntryItemType-filter", {
-				entity: $scope.filterEntity,
-			});
-		};
-
-		$scope.createEntity = function () {
-			$scope.selectedEntity = null;
-			messageHub.showDialogWindow("PayrollEntryItemType-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
-		};
-
-		$scope.updateEntity = function (entity) {
-			messageHub.showDialogWindow("PayrollEntryItemType-details", {
-				action: "update",
-				entity: entity,
-			}, null, false);
-		};
-
-		$scope.deleteEntity = function (entity) {
-			let id = entity.Id;
-			messageHub.showDialogAsync(
-				'Delete PayrollEntryItemType?',
-				`Are you sure you want to delete PayrollEntryItemType? This action cannot be undone.`,
-				[{
-					id: "delete-btn-yes",
-					type: "emphasized",
-					label: "Yes",
+			Dialogs.showWindow({
+				id: 'PayrollEntryItemType-details',
+				params: {
+					action: 'select',
+					entity: entity,
 				},
-				{
-					id: "delete-btn-no",
-					type: "normal",
-					label: "No",
-				}],
-			).then(function (msg) {
-				if (msg.data === "delete-btn-yes") {
-					entityApi.delete(id).then(function (response) {
-						if (response.status != 204) {
-							messageHub.showAlertError("PayrollEntryItemType", `Unable to delete PayrollEntryItemType: '${response.message}'`);
-							return;
-						}
+				closeButton: true,
+			});
+		};
+
+		$scope.openFilter = () => {
+			Dialogs.showWindow({
+				id: 'PayrollEntryItemType-filter',
+				params: {
+					entity: $scope.filterEntity,
+				},
+				closeButton: true,
+			});
+		};
+
+		$scope.createEntity = () => {
+			$scope.selectedEntity = null;
+			Dialogs.showWindow({
+				id: 'PayrollEntryItemType-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false,
+			});
+		};
+
+		$scope.updateEntity = (entity) => {
+			Dialogs.showWindow({
+				id: 'PayrollEntryItemType-details',
+				params: {
+					action: 'update',
+					entity: entity,
+				},
+				closeButton: false,
+			});
+		};
+
+		$scope.deleteEntity = (entity) => {
+			let id = entity.Id;
+			Dialogs.showDialog({
+				title: translated.deleteTitle,
+				message: translated.deleteConfirm,
+				buttons: [{
+					id: 'delete-btn-yes',
+					state: ButtonStates.Emphasized,
+					label: translated.yes,
+				}, {
+					id: 'delete-btn-no',
+					label: translated.no,
+				}]
+			}).then((buttonId) => {
+				if (buttonId === 'delete-btn-yes') {
+					EntityService.delete(id).then((response) => {
 						$scope.loadPage($scope.dataPage, $scope.filter);
-						messageHub.postMessage("clearDetails");
+						Dialogs.triggerEvent('codbex-payrolls.Settings.PayrollEntryItemType.clearDetails');
+					}, (error) => {
+						const message = error.data ? error.data.message : '';
+						Dialogs.showAlert({
+							title: LocaleService.t('codbex-payrolls:codbex-payrolls-model.t.PAYROLLENTRYITEMTYPE'),
+							message: LocaleService.t('codbex-payrolls:codbex-payrolls-model.messages.error.unableToDelete', { name: '$t(codbex-payrolls:codbex-payrolls-model.t.PAYROLLENTRYITEMTYPE)', message: message }),
+							type: AlertTypes.Error
+						});
+						console.error('EntityService:', error);
 					});
 				}
 			});
 		};
 
-	}]);
+	});
