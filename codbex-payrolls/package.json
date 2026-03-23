@@ -7,11 +7,10 @@
     },
     "publishConfig": {
         "registry": "https://npm.pkg.github.com"
-    },
-    "scripts": {
-        "build": "tsc"
-    },
+    }
     "dependencies": {
-        "@codbex/codbex-payments": "^0.9.0"
+        "@codbex/codbex-payments": "^0.9.0",
+        "@codbex/codbex-number-generator": "^1.1.0",
+        "@codbex/codbex-number-generator-data": "^1.0.0"
     }
 }
