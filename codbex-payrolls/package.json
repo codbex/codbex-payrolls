@@ -7,7 +7,7 @@
     },
     "publishConfig": {
         "registry": "https://npm.pkg.github.com"
-    }
+    },
     "dependencies": {
         "@codbex/codbex-payments": "^0.9.0",
         "@codbex/codbex-number-generator": "^1.1.0",
