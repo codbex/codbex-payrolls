@@ -1,6 +1,6 @@
 {
     "module": "codbex-payrolls/gen/codbex-payrolls/ui/Payrolls/PayrollEntry/dialog-filter/view.js",
-    "extensionPoint": "dialog-window",
+    "extensionPoint": "application-windows",
     "description": "codbex-payrolls - Application Dialog Window",
     "role": "codbex-payrolls.Payrolls.PayrollEntryReadOnly,codbex-payrolls.Payrolls.PayrollEntryFullAccess"
 }

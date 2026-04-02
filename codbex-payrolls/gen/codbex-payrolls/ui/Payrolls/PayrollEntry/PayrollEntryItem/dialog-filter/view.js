@@ -4,14 +4,17 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "PayrollEntryItem-filter",
-    label: "PayrollEntryItem Filter",
-    link: "/services/web/codbex-payrolls/gen/codbex-payrolls/ui/Payrolls/PayrollEntry/PayrollEntryItem/dialog-filter/index.html",
-    perspectiveName: "Payrolls"
+    id: 'PayrollEntryItem-filter',
+    label: 'PayrollEntryItem Filter',
+    translation: {
+        key: 'codbex-payrolls:codbex-payrolls-model.extName',
+        options: {
+            content: '$t(codbex-payrolls:codbex-payrolls-model.t.PAYROLLENTRYITEM) $t(codbex-payrolls:codbex-payrolls-model.defaults.filter)',
+        }
+    },
+    path: '/services/web/codbex-payrolls/gen/codbex-payrolls/ui/Payrolls/PayrollEntry/PayrollEntryItem/dialog-filter/index.html',
+    perspectiveName: 'Payrolls'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

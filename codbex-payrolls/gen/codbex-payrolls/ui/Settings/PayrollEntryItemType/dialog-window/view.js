@@ -4,14 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "PayrollEntryItemType-details",
-    label: "PayrollEntryItemType",
-    link: "/services/web/codbex-payrolls/gen/codbex-payrolls/ui/Settings/PayrollEntryItemType/dialog-window/index.html",
-    perspectiveName: "Settings"
+    id: 'PayrollEntryItemType-details',
+    label: 'PayrollEntryItemType',
+    translation: {
+        key: 'codbex-payrolls:codbex-payrolls-model.t.PAYROLLENTRYITEMTYPE',
+    },
+    path: '/services/web/codbex-payrolls/gen/codbex-payrolls/ui/Settings/PayrollEntryItemType/dialog-window/index.html',
+    perspectiveName: 'Settings'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

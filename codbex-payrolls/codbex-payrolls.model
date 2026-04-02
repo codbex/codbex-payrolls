@@ -4,6 +4,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "PAYROLLENTRY_ID",
                         "dataNullable": "true",
@@ -18,7 +19,8 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(31)",
+                        "auditType": "NONE",
+                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Payroll Entry')",
                         "dataLength": "20",
                         "dataName": "PAYROLLENTRY_NUMBER",
                         "dataNullable": "true",
@@ -33,6 +35,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PAYROLLENTRY_EMPLOYEE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -52,6 +55,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "100",
                         "dataName": "PAYROLLENTRY_TITLE",
                         "dataNullable": "true",
@@ -66,6 +70,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataDefaultValue": "0",
                         "dataName": "PAYROLLENTRY_AMOUNT",
                         "dataNullable": "true",
@@ -80,6 +85,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PAYROLLENTRY_CURRENCY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -99,6 +105,7 @@
                         "relationshipEntityPerspectiveLabel": "Currencies"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PAYROLLENTRY_STARTDATE",
                         "dataNullable": "true",
                         "dataType": "DATE",
@@ -112,6 +119,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PAYROLLENTRY_ENDDATE",
                         "dataNullable": "true",
                         "dataType": "DATE",
@@ -125,6 +133,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PAYROLLENTRY_STATUS",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -144,6 +153,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PAYROLLENTRY_PAYDATE",
                         "dataNullable": "true",
                         "dataType": "DATE",
@@ -171,11 +181,13 @@
                 "menuIndex": "100",
                 "menuKey": "payrollentry",
                 "menuLabel": "PayrollEntry",
+                "multilingual": "false",
                 "name": "PayrollEntry",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/bill.svg",
                 "perspectiveLabel": "Payrolls",
                 "perspectiveName": "Payrolls",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "13",
                 "perspectiveRole": "",
                 "roleRead": "codbex-payrolls.Payrolls.PayrollEntryReadOnly",
@@ -187,6 +199,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "PAYROLLSTATUS_ID",
                         "dataNullable": "true",
@@ -201,6 +214,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "PAYROLLSTATUS_NAME",
                         "dataNullable": "true",
@@ -229,11 +243,13 @@
                 "menuIndex": "100",
                 "menuKey": "payrollstatus",
                 "menuLabel": "PayrollStatus",
+                "multilingual": "false",
                 "name": "PayrollStatus",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "900",
                 "perspectiveRole": "",
                 "roleRead": "codbex-payrolls.Settings.PayrollStatusReadOnly",
@@ -245,6 +261,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "EMPLOYEE_ID",
                         "dataNullable": "true",
@@ -259,6 +276,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "50",
                         "dataName": "EMPLOYEE_FIRSTNAME",
                         "dataNullable": "true",
@@ -275,6 +293,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "50",
                         "dataName": "EMPLOYEE_MIDDLENAME",
                         "dataNullable": "true",
@@ -290,6 +309,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "50",
                         "dataName": "EMPLOYEE_LASTNAME",
                         "dataNullable": "true",
@@ -306,6 +326,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "entity[\"FirstName\"] + \" \" + entity[\"LastName\"]",
                         "dataLength": "70",
                         "dataName": "EMPLOYEE_NAME",
@@ -321,6 +342,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "EMPLOYEE_BIRTHDATE",
                         "dataNullable": "true",
                         "dataType": "DATE",
@@ -334,6 +356,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "10",
                         "dataName": "EMPLOYEE_EGN",
                         "dataNullable": "true",
@@ -348,6 +371,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "EMPLOYEE_GENDER",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -366,6 +390,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "EMPLOYEE_NATIONALITY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -384,6 +409,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "EMPLOYEE_MARTIALSTATUS",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -414,11 +440,13 @@
                 "menuIndex": "100",
                 "menuKey": "employee",
                 "menuLabel": "Employee",
+                "multilingual": "false",
                 "name": "Employee",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
                 "perspectiveLabel": "Entities",
                 "perspectiveName": "Employees",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "projectionReferencedEntity": "Employee",
@@ -430,6 +458,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "PAYROLLENTRYITEM_ID",
                         "dataNullable": "true",
@@ -444,6 +473,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PAYROLLENTRYITEM_TYPE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -463,6 +493,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PAYROLLENTRYITEM_AMOUNT",
                         "dataNullable": "true",
                         "dataType": "DOUBLE",
@@ -476,6 +507,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PAYROLLENTRYITEM_PAYROLLENTRY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -508,11 +540,13 @@
                 "menuIndex": "100",
                 "menuKey": "payrollentryitem",
                 "menuLabel": "PayrollEntryItem",
+                "multilingual": "false",
                 "name": "PayrollEntryItem",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/bill.svg",
                 "perspectiveLabel": "Payrolls",
                 "perspectiveName": "Payrolls",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "13",
                 "perspectiveRole": "",
                 "roleRead": "codbex-payrolls.Payrolls.PayrollEntryItemReadOnly",
@@ -524,6 +558,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "PAYROLLENTRYITEMTYPE_ID",
                         "dataNullable": "true",
@@ -538,6 +573,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "PAYROLLENTRYITEMTYPE_NAME",
                         "dataNullable": "true",
@@ -566,11 +602,13 @@
                 "menuIndex": "100",
                 "menuKey": "payrollentryitemtype",
                 "menuLabel": "PayrollEntryItemType",
+                "multilingual": "false",
                 "name": "PayrollEntryItemType",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "900",
                 "perspectiveRole": "",
                 "roleRead": "codbex-payrolls.Settings.PayrollEntryItemTypeReadOnly",
@@ -582,6 +620,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "CURRENCY_ID",
                         "dataNullable": "true",
@@ -596,6 +635,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "3",
                         "dataName": "CURRENCY_CODE",
                         "dataNullable": "true",
@@ -609,6 +649,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "127",
                         "dataName": "CURRENCY_NAME",
                         "dataNullable": "true",
@@ -622,6 +663,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "3",
                         "dataName": "CURRENCY_NUMERIC",
                         "dataNullable": "true",
@@ -635,6 +677,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "CURRENCY_ROUNDING",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -647,6 +690,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "CURRENCY_BASE",
                         "dataNullable": "true",
                         "dataType": "BOOLEAN",
@@ -659,6 +703,7 @@
                         "widgetType": "CHECKBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "CURRENCY_RATE",
                         "dataNullable": "true",
                         "dataType": "DOUBLE",
@@ -683,11 +728,13 @@
                 "menuIndex": "100",
                 "menuKey": "currency",
                 "menuLabel": "Currency",
+                "multilingual": "false",
                 "name": "Currency",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/dollar-alt.svg",
                 "perspectiveLabel": "Currencies",
                 "perspectiveName": "Currencies",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "990",
                 "perspectiveRole": "",
                 "projectionReferencedEntity": "Currency",
@@ -702,15 +749,13 @@
                 "name": "Payrolls",
                 "label": "Payrolls",
                 "icon": "/services/web/resources/unicons/bill.svg",
-                "order": "13",
-                "role": {}
+                "order": "13"
             },
             {
                 "name": "Settings",
                 "label": "Settings",
                 "icon": "/services/web/resources/unicons/wrench.svg",
-                "order": "900",
-                "role": {}
+                "order": "900"
             }
         ],
         "navigations": []
